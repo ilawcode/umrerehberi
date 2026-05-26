@@ -158,6 +158,70 @@ export const defaultPrayers = [
     translation: "Selâm sizlere olsun ey müminler yurdunun sakinleri! Şüphesiz bizler de inşallah sizlere kavuşacağız. Allah'ım! Cennetü'l-Baki mezarlığında yatan sahabelere, ehli beyte ve tüm müminlere mağfiret eyle.",
     category: "visit",
     order: 20
+  },
+  {
+    title: "Sekine Duası (Risale-i Nur Virdi)",
+    arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. فَرْدٌ، حَيٌّ، قَيُّومٌ، حَكَمٌ، عَدْلٌ، قُدُّوسٌ. سَيَجْعَلُ اللَّهُ بَعْدَ عُسْرٍ يُسْرًا. عَنَتِ الْوُجُوهُ لِلْحَيِّ الْقَيُّومِ. وَإِنَّ اللَّهَ بِكُمْ لَرَؤُوفٌ رَحِيمٌ. إِنَّ اللَّهَ كَانَ تَوَّابًا رَحِيمًا. إِنَّ اللَّهَ كَانَ غَفُورًا رَحِيمًا. فَإِنَّ اللَّهَ كَانَ عَفُوًّا قَدِيرًا. إِنَّ اللَّهَ كَانَ سَمِيعًا بَصِيرًا. إِنَّ اللَّهَ كَانَ عَلِيمًا حَكِيمًا. إِنَّ اللَّهَ كَانَ عَلَيْكُمْ رَقِيبًا. إِنَّا فَتَحْنَا لَكَ فَتْحًا مُبِينًا. وَيَنْصُرَكَ اللَّهُ نَصْرًا عَزِيزًا. إِنَّ حِزْبَ اللَّهِ هُمُ الْغَالِبُونَ. إِنَّ اللَّهَ هُوَ الْقَوِيُّ الْعَزِيزُ. إِنَّ اللَّهَ هُوَ الْغَنِيُّ الْحَمِIDُ. حَسْبِيَ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ. حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ. لَا يَحْزُنُهُمُ الْفَزَعُ الْأَكْبَرُ. إِيَّاكَ نَعْبُdُ وَإِيَّاكَ نَسْتَعِينُ. وَالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ.",
+    transliteration: "Bismillâhirrahmânirrahîm. Ferdün, Hayyün, Kayyûmün, Hakemün, Adlün, Kuddûsün. 1. Seyec'alullâhu ba'de usrin yusrâ. 2. Anetil-vucûhu lil-hayyil-kayyûm. 3. Ve innallâhe biküm leraûfün rahîm. 4. İnnallâhe kâne tevvâben rahîmâ. 5. İnnallâhe kâne gafûran rahîmâ. 6. Fe innallâhe kâne afüvven qadîrâ. 7. İnnallâhe kâne semîan basîrâ. 8. İnnallâhe kâne alîmen hakîmâ. 9. İnnallâhe kâne aleyküm raqîbâ. 10. İnnâ fetehnâ leke fethan mubînâ. 11. Ve yensurakellâhu nasran azîzâ. 12. İnne hızballâhi humül-gâlibûn. 13. İnnallâhe huvel-qaviyyül-azîz. 14. İnnallâhe huvel-ganiyyül-hamîd. 15. Hasbiyallâhu lâ ilâhe illâ hû. 16. Hasbünallâhu ve ni'mel-vekîl. 17. Lâ yahzünühümül-fezeul-ekber. 18. İyyâke na'büdü ve iyyâke nestaîn. 19. Velhamdülillâhi rabbil-âlemîn.",
+    translation: "Rahman ve Rahim olan Allah'ın adıyla. Allah'ın Ferd, Hayy, Kayyûm, Hakem, Adl, Kuddûs isimleriyle: 1. Allah, her sıkıntıdan sonra kolaylık lütfedecektir (Talak: 7). 2. Bütün yüzler, Hayy ve Kayyûm olan Allah'a boyun eğmiştir (Taha: 111). 3. Şüphesiz Allah, size karşı çok şefkatli ve çok merhametlidir (Hadid: 9). 4. Şüphesiz Allah, tövbeleri çok kabul eden ve merhamet edendir (Nisa: 16). 5. Şüphesiz Allah, çok bağışlayan ve merhamet edendir (Nisa: 23). 6. Şüphesiz Allah, çok affeden ve her şeye gücü yetendir (Nisa: 149). 7. Şüphesiz Allah, her şeyi hakkıyla işiten ve görendir (Nisa: 58). 8. Şüphesiz Allah, her şeyi hakkıyla bilen ve hikmet sahibidir (Nisa: 11). 9. Şüphesiz Allah, üzerinizde tam bir gözetleyicidir (Nisa: 1). 10. Biz sana apaçık bir fetih verdik (Fetih: 1). 11. Ve Allah sana şanlı bir zaferle yardım etsin (Fetih: 3). 12. Şüphesiz Allah'ın tarafını tutanlar galip geleceklerdir (Maide: 56). 13. Şüphesiz Allah, çok güçlüdür ve mutlak galip olandır (Şura: 19). 14. Şüphesiz Allah, her şeyden müstağnidir ve övülmeye layıktır (Lokman: 26). 15. Allah bana yeter, O'ndan başka ilah yoktur (Tevbe: 129). 16. Allah bize yeter, O ne güzel vekildir (Âl-i İmran: 173). 17. En büyük korku (kıyamet dehşeti) onları üzmez (Enbiya: 103). 18. Ancak sana kulluk eder ve ancak senden yardım isteriz (Fatiha: 5). 19. Ve âlemlerin Rabbi olan Allah'a hamdolsun (Fatiha: 2).",
+    category: "risale",
+    order: 21
+  },
+  {
+    title: "Tercüman-ı İsm-i Âzam Duası (Namaz Tesbihatından)",
+    arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. سُبْحَانَكَ يَا اَللّٰهُ تَعَالَيْتَ يَا رَحْمٰنُ اَجِرْنَا مِنَ النَّارِ بِعَفْوِكَ يَا رَحْمٰنُ. سُبْحَانَكَ يَا رَحِيمُ تَعَالَيْتَ يَا كَرِيمُ اَجِرْنَا مِنَ النَّارِ بِعَفْوِكَ يَا رَحْمٰنُ. سُبْحَانَكَ يَا حَمِيدُ تَعَالَيْتَ يَا حَكِيمُ اَجِرْنَا مِنَ النَّارِ بِعَفْوِكَ يَا رَحْمٰنُ. سُبْحَانَكَ يَا مَجِيدُ تَعَالَيْتَ يَا مَلِيكُ اَجِرْنَا مِنَ النَّارِ بِعَفْوِكَ يَا رَحْمٰنُ. سُبْحَانَكَ يَا قُدُّوسُ تَعَالَيْتَ يَا سَلَامُ اَجِرْنَا مِنَ النَّارِ بِعَفْوِكَ يَا رَحْمٰنُ.",
+    transliteration: "Bismillâhirrahmânirrahîm. Sübhâneke yâ Allâh, teâleyte yâ Rahmân, ecirnâ mine'n-nâr bi-afvike yâ Rahmân. Sübhâneke yâ Rahîm, teâleyte yâ Kerîm, ecirnâ mine'n-nâr bi-afvike yâ Rahmân. Sübhâneke yâ Hamîd, teâleyte yâ Hakîm, ecirnâ mine'n-nâr bi-afvike yâ Rahmân. Sübhâneke yâ Mecîd, teâleyte yâ Melîk, ecirnâ mine'n-nâr bi-afvike yâ Rahmân. Sübhâneke yâ Kuddûs, teâleyte yâ Selâm, ecirnâ mine'n-nâr bi-afvike yâ Rahmân.",
+    translation: "Rahman ve Rahim olan Allah'ın adıyla. Sübhansın ey Allah, yücesin ey Rahman! Affınla bizi cehennem ateşinden koru ey Rahman! Sübhansın ey Rahim, yücesin ey Kerim! Affınla bizi cehennem ateşinden koru ey Rahman! Sübhansın ey Hamîd (hamde layık olan), yücesin ey Hakîm! Affınla bizi cehennem ateşinden koru ey Rahman! Sübhansın ey Mecîd (şan ve şeref sahibi), yücesin ey Melîk (mülkün sahibi)! Affınla bizi cehennem ateşinden koru ey Rahman! Sübhansın ey Kuddûs (günahlardan arınmış), yücesin ey Selâm (esenlik veren)! Affınla bizi cehennem ateşinden koru ey Rahman! (Namaz tesbihatlarında her gün okunan çok faziletli bir duadır.)",
+    category: "risale",
+    order: 22
+  },
+  {
+    title: "İsm-i Âzam Duası (Namaz Tesbihatından)",
+    arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. يَا جَمِيلُ يَا اَللّٰهُ، يَا قَرِيبُ يَا اَللّٰهُ، يَا مُجِيبُ يَا اَللّٰهُ، يَا حَبِيبُ يَا اَللّٰهُ. يَا رَؤُفُ يَا اَللّٰهُ، يَا مَعْرُوفُ يَا اَللّٰهُ. سُبْحَانَكَ لَا إِلَٰهَ إِلَّا أَنْتَ الْأَمَانُ الْأَمَانُ أَجِرْنَا مِنَ النَّارِ.",
+    transliteration: "Bismillâhirrahmânirrahîm. Yâ Cemîlü yâ Allâh, yâ Qarîbü yâ Allâh, yâ Mucîbü yâ Allâh, yâ Habîbü yâ Allâh. Yâ Raûfü yâ Allâh, yâ Ma'rûfü yâ Allâh. Sübhâneke lâ ilâhe illâ ente'l-emânü'l-emânü ecirnâ mine'n-nâr.",
+    translation: "Rahman ve Rahim olan Allah'ın adıyla. Ey Cemîl (güzellik sahibi) Allah, ey Karîb (yakın olan) Allah, ey Mucîb (duaları kabul eden) Allah, ey Habîb (sevgili) Allah. Ey Raûf (çok şefkatli) Allah, ey Ma'rûf (bilinen) Allah. Sübhansın, Senden başka ilah yoktur. Eman ver bize, emin kıl bizi, koru bizi cehennem ateşinden. (Risale-i Nur talebelerinin her namaz sonrasında okudukları İsm-i Azam duasıdır.)",
+    category: "risale",
+    order: 23
+  },
+  {
+    title: "Münâcâtü'l-Kur'ân (Hz. Osman Efendimizin Münacatı)",
+    arabic: "اللَّهُمَّ ارْحَمْنِي بِالْقُرْآنِ، وَاجْعَلْهُ لِي إِمَامًا وَنُورًا وَهُدًى وَرَحْمَةً. اللَّهُمَّ ذَكِّرْنِي مِنْهُ مَا نَسِيتُ، وَعَلِّمْنِي مِنْهُ مَا جَهِلْتُ، وَارْزُقْنِي تِلَاوَتَهُ آنَاءَ اللَّيْلِ وَأَطْرَافَ النَّهَارِ.",
+    transliteration: "Allahümme'rhamnî bi'l-Kur'ân, ve'c-alhu lî imâmen ve nûran ve hüden ve rahmeh. Allahümme zekkirnî minhü mâ nesîtü ve allimnî minhü mâ cehiltü, ve'r-zuqnî tilâvetehû ânae'l-leyli ve etrâfe'n-nehâr.",
+    translation: "Allah'ım! Kur'an hürmetine bana merhamet et. Onu benim için bir rehber, bir nur, bir hidayet ve bir rahmet kıl. Allah'ım! Kur'an'dan unuttuğumu bana hatırlat, bilmediğimi bana öğret. Gece vakitlerinde ve gündüzün etrafında (her anında) onu okumayı bana nasip eyle. (Hz. Osman'a (r.a.) atfedilen ve Büyük Cevşen'de yer alan bu münacat, Kur'an'ın feyzinden istifade etmek için çok tesirlidir.)",
+    category: "risale",
+    order: 24
+  },
+  {
+    title: "Tahmidiye Duası (Hizbü'l-Hakaik 9. Bölüm)",
+    arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. اَلْحَمْدُ لِلَّهِ الَّذِي خَلَقَ السَّمَاوَاتِ وَالْأَرْضَ وَجَعَلَ الظُّلُمَاتِ وَالنُwرَ. اَلْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ، حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ كَمَا يُحِبُّ رَبُّنَا وَيَرْضَى. بِعَدَدِ خَلْقِهِ وَرِضَا نَفْسِهِ وَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ.",
+    transliteration: "Bismillâhirrahmânirrahîm. Elhamdü lillâhillezî haleqa's-semâvâti ve'l-arda ve ceale'z-zulümâti ve'n-nûr. Elhamdü lillâhi Rabbi'l-âlemîn, hamden kesîran tayyiben mubâraken fîhi kemâ yuhibbü Rabbünâ ve yerdâ. Bi-adedi halqihî ve ridâ nefsihî ve zinete arşihî ve midâde kelimâtihih.",
+    translation: "Rahman ve Rahim olan Allah'ın adıyla. Gökleri ve yeri yaratan, karanlıkları ve nuru var eden Allah'a hamdolsun. Âlemlerin Rabbi olan Allah'a, Rabbimizin sevip razı olacağı şekilde temiz, bereketli ve bolca hamdolsun. O'nun yarattıklarının sayısınca, Zatının rızasınca, Arşının ağırlığınca ve kelimelerinin mürekkebince O'na hamdolsun. (Bediüzzaman Said Nursi'nin hastalık ve musibet zamanlarında şifa vesilesi olarak okuduğu, kainattaki tüm varlıklar adedince hamdleri barındıran muazzam bir teşekkürnamedir.)",
+    category: "risale",
+    order: 25
+  },
+  {
+    title: "Hulâsatü'l-Hulâsa Duası (Hizbü'l-Hakaik'in Son Duası)",
+    arabic: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، شَهِدَ اللَّهُ أَنَّهُ لَا إِلَٰهَ إِلَّا هُوَ وَالْمَلَائِكَةُ وَأُولُو الْعِلْمِ قَائِمًا بِالْقِسْطِ. لَا إِلَٰهَ إِلَّا اللَّهُ الْوَاحِدُ الْأَحَدُ الصَّمَدُ الَّذِي لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُن| لَهُ كُفُوًا أَحَدٌ.",
+    transliteration: "Bismillâhirrahmânirrahîm. Lâ ilâhe illallâhu vahdehû lâ şerîke leh. Şehidallâhu ennehû lâ ilâhe illâ hüve ve'l-melâiketü ve ûlü'l-ilmi qâimen bi'l-qıst. Lâ ilâhe illallâhu'l-Vâhidu'l-Ehadü's-Samedüllâzî lem yelid ve lem yûled ve lem yekün lehû küfüven ehad.",
+    translation: "Rahman ve Rahim olan Allah'ın adıyla. Allah'tan başka ilah yoktur, O tektir, ortağı yoktur. Allah, melekler ve ilim sahipleri adaleti ayakta tutarak şahitlik ettiler ki O'ndan başka ilah yoktur. Doğurmamış, doğurulmamış ve hiçbir dengi bulunmayan, Tek, Ehad ve Samed olan Allah'tan başka ilah yoktur. (Ayetü'l-Kübra risalesinin özeti olan bu tefekkürî dua, Büyük Cevşen'in sonunu taçlandıran en yüksek tevhid mertebelerini barındırır.)",
+    category: "risale",
+    order: 26
+  },
+  {
+    title: "Sözler'in / Altıncı Söz'ün Sonundaki Dua (Hüsn-ü Hâtime Duası)",
+    arabic: "يَا رَبِّ! اِغْفِرْ قُصُورَنَا وَاقْبَلْنَا عَبِيدًا لَكَ، وَاجْعَلْنَا أُمَنَاءَ فِى أَمَانَتِكَ اِلٰى أَنْ تَقْبِضَ أَمَانَتَكَ مِنَّا. اٰمِينَ.",
+    transliteration: "Yâ Rab, kusurumuzu affet. Bizi Kendine kul kabul et. Emanetini kabzetmek zamanına kadar bizi emanette emin kıl. Âmin.",
+    translation: "Ey Rabbimiz! Kusurumuzu bağışla. Bizi Kendine kul kabul et. Emanetini geri alacağın vakte kadar bizi emanetinde emin (güvenilir) kıl. Âmin. (Sözler eserinin Altıncı Söz'ünün sonunda yer alan ve derslerin nihayetinde sıklıkla okunan çok meşhur bir teslimiyet duasıdır.)",
+    category: "risale",
+    order: 27
+  },
+  {
+    title: "Mu'cizât-ı Ahmediye Salavatı (On Dokuzuncu Mektup Girişi)",
+    arabic: "اَلْفُ اَلْفِ صَلاَةٍ وَ اَلْفُ اَلْفِ سَلاَمٍ عَلَيْكَ يَا رَسُولَ اللّٰهِ بِعَدَدِ الْجِنِّ وَاْلاِنْسِ وَبِعَدَدِ الْمَلَكِ وَالنُّجُومِ",
+    transliteration: "Elfü elfi salâtin ve elfü elfi selâmin aleyke yâ Resûlallâh, bi-adedi'l-cinni ve'l-insi ve bi-adedi'l-melâiketi ve'n-nücûm.",
+    translation: "Ey Allah'ın Resûlü! Cinlerin ve insanların adedince, meleklerin ve yıldızların sayısınca, milyonlarca salât ve milyonlarca selâm senin üzerine olsun. (Peygamber Efendimiz'in (asm) mucizelerini anlatan Mu'cizât-ı Ahmediye Risalesi'nin başında ve çeşitli yerlerinde geçen faziletli bir salavattır.)",
+    category: "risale",
+    order: 28
   }
 ];
 

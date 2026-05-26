@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from './theme-provider';
@@ -8,6 +9,78 @@ import styles from './navigation.module.css';
 export default function Navigation({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isSupported, setIsSupported] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const checkSupport = () => {
+      const docEl = document.documentElement as any;
+      return !!(
+        document.fullscreenEnabled ||
+        docEl.requestFullscreen ||
+        docEl.webkitRequestFullscreen ||
+        docEl.mozRequestFullScreen ||
+        docEl.msRequestFullscreen
+      );
+    };
+
+    setIsSupported(checkSupport());
+
+    const handleFullscreenChange = () => {
+      const doc = document as any;
+      setIsFullscreen(!!(
+        document.fullscreenElement ||
+        doc.webkitFullscreenElement ||
+        doc.mozFullScreenElement ||
+        doc.msFullscreenElement
+      ));
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
+  }, []);
+
+  const toggleFullscreen = async () => {
+    try {
+      const docEl = document.documentElement as any;
+      const doc = document as any;
+
+      if (!document.fullscreenElement && !doc.webkitFullscreenElement && !doc.mozFullScreenElement && !doc.msFullscreenElement) {
+        if (docEl.requestFullscreen) {
+          await docEl.requestFullscreen();
+        } else if (docEl.webkitRequestFullscreen) {
+          await docEl.webkitRequestFullscreen();
+        } else if (docEl.mozRequestFullScreen) {
+          await docEl.mozRequestFullScreen();
+        } else if (docEl.msRequestFullscreen) {
+          await docEl.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if (doc.webkitExitFullscreen) {
+          await doc.webkitExitFullscreen();
+        } else if (doc.mozCancelFullScreen) {
+          await doc.mozCancelFullScreen();
+        } else if (doc.msExitFullscreen) {
+          await doc.msExitFullscreen();
+        }
+      }
+    } catch (err) {
+      console.error('Error toggling fullscreen:', err);
+    }
+  };
 
   return (
     <div className="app-container">
@@ -22,45 +95,64 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
           </svg>
           <span className={styles.title}>Umre Rehberi</span>
         </div>
-        <div className={styles.themeToggle}>
-          <button 
-            onClick={() => setTheme('light')} 
-            className={`${styles.themeBtn} ${theme === 'light' ? styles.activeTheme : ''}`}
-            title="Açık Mod"
-          >
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-          </button>
-          <button 
-            onClick={() => setTheme('dark')} 
-            className={`${styles.themeBtn} ${theme === 'dark' ? styles.activeTheme : ''}`}
-            title="Koyu Mod"
-          >
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-            </svg>
-          </button>
-          <button 
-            onClick={() => setTheme('sunlight')} 
-            className={`${styles.themeBtn} ${theme === 'sunlight' ? styles.activeTheme : ''}`}
-            title="Güneş Işığı Modu"
-          >
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
-              <circle cx="6" cy="12" r="3" />
-              <circle cx="18" cy="12" r="3" />
-              <line x1="9" y1="12" x2="15" y2="12" strokeWidth="3" />
-              <path d="M3 12C3 7 6 6 12 6C18 6 21 7 21 12" />
-            </svg>
-          </button>
+        <div className={styles.headerActions}>
+          <div className={styles.themeToggle}>
+            <button 
+              onClick={() => setTheme('light')} 
+              className={`${styles.themeBtn} ${theme === 'light' ? styles.activeTheme : ''}`}
+              title="Açık Mod"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            </button>
+            <button 
+              onClick={() => setTheme('dark')} 
+              className={`${styles.themeBtn} ${theme === 'dark' ? styles.activeTheme : ''}`}
+              title="Koyu Mod"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            </button>
+            <button 
+              onClick={() => setTheme('sunlight')} 
+              className={`${styles.themeBtn} ${theme === 'sunlight' ? styles.activeTheme : ''}`}
+              title="Güneş Işığı Modu"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="12" r="3" />
+                <line x1="9" y1="12" x2="15" y2="12" strokeWidth="3" />
+                <path d="M3 12C3 7 6 6 12 6C18 6 21 7 21 12" />
+              </svg>
+            </button>
+          </div>
+          {isSupported && (
+            <button 
+              onClick={toggleFullscreen} 
+              className={styles.fullscreenBtn}
+              title={isFullscreen ? "Tam Ekrandan Çık" : "Tam Ekran Yap"}
+            >
+              {isFullscreen ? (
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                </svg>
+              )}
+            </button>
+          )}
         </div>
       </header>
 

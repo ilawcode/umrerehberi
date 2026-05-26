@@ -239,3 +239,213 @@
 [data-theme='sunlight'] .mapWrapper :global(.leaflet-tile-container) {
   filter: grayscale(100%) contrast(150%);
 }
+
+/* Location retry styles */
+.statusIndicatorClickable {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(239, 68, 68, 0.05);
+  border: 1px dashed rgba(239, 68, 68, 0.2);
+  transition: all 0.2s ease;
+}
+
+.statusIndicatorClickable:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.statusDotError {
+  background-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.retryBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 16px;
+  background-color: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  border-radius: var(--radius-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  font-family: inherit;
+}
+
+.retryBanner:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.08);
+}
+
+.retryBanner:active {
+  transform: scale(0.995);
+}
+
+.retryBanner:focus-visible {
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.retryIcon {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.retryTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.retryTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #b91c1c;
+}
+
+.retryMessage {
+  font-size: 0.8rem;
+  color: #7f1d1d;
+  line-height: 1.4;
+}
+
+/* Update button styles */
+.groupInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sessionActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .sessionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .sessionActions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+.updateBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  border: none;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.updateBtn:hover {
+  background-color: var(--primary-hover, var(--primary));
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.updateBtn:active {
+  transform: translateY(0);
+}
+
+.updateBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.refreshIcon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Map Click Popup Styles */
+.mapPopup {
+  padding: 6px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  font-family: inherit;
+}
+
+.mapPopupText {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b; /* Dark text for map popup readability */
+  line-height: 1.4;
+}
+
+/* Ensure Leaflet popup content is visible and neat */
+:global(.leaflet-popup-content-wrapper) {
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border: 1px solid var(--card-border) !important;
+  background: var(--card-bg) !important;
+}
+
+:global(.leaflet-popup-tip) {
+  background: var(--card-bg) !important;
+}
+
+[data-theme='dark'] .mapPopupText {
+  color: #f8fafc;
+}
+
+.mapPopupBtn {
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  border: none;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.mapPopupBtn:hover {
+  opacity: 0.95;
+  transform: scale(1.02);
+}
+
+.mapPopupBtn:active {
+  transform: scale(0.98);
+}
+
+/* Floating overlay updating state button */
+.updatingBtn {
+  opacity: 0.8;
+}
