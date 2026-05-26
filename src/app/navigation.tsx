@@ -11,6 +11,7 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isSupported, setIsSupported] = useState(false);
   const { unreadCount } = useChat();
 
 
