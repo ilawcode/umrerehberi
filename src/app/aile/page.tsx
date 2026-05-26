@@ -1,8 +1,20 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import type { MarkerOptions } from 'leaflet';
+import type { MarkerOptions, LeafletMouseEvent } from 'leaflet';
 import styles from './aile.module.css';
+import { db } from '@/lib/firebase';
+import { 
+  collection, 
+  doc, 
+  setDoc, 
+  addDoc, 
+  onSnapshot, 
+  query, 
+  orderBy, 
+  serverTimestamp, 
+  deleteDoc 
+} from 'firebase/firestore';
 
 interface Member {
   deviceId: string;
@@ -80,25 +92,49 @@ export default function FamilyMapPage() {
   const mapRef = useRef<import('leaflet').Map | null>(null);
   const markersRef = useRef<{ [deviceId: string]: import('leaflet').Marker }>({});
   const watchIdRef = useRef<number | null>(null);
-  const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const leafletModuleRef = useRef<typeof import('leaflet') | null>(null);
+  const unsubMembersRef = useRef<(() => void) | null>(null);
+  const unsubMessagesRef = useRef<(() => void) | null>(null);
+
+  // Chat messaging states
+  interface ChatMessage {
+    id: string;
+    senderName: string;
+    deviceId: string;
+    text: string;
+    createdAt: any;
+  }
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messageText, setMessageText] = useState<string>('');
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  const quickTemplates = [
+    'Kabe kapısındayım.',
+    'Oteldeyim.',
+    'Buluşma noktasındayım.',
+    'Yardıma ihtiyacım var!',
+    'Tavafı bitirdim.',
+    'Sa\'yi bitirdim.'
+  ];
 
   // Colors list for family members
   const memberColors = ['#0f766e', '#1e3a8a', '#701a75', '#7c2d12', '#14532d', '#b45309'];
 
-  // Clean up watchers and intervals
+  // Clean up watchers and listeners
   function stopTrackingAndPolling() {
     if (watchIdRef.current !== null) {
       navigator.geolocation.clearWatch(watchIdRef.current);
       watchIdRef.current = null;
     }
-    if (pollIntervalRef.current) {
-      clearInterval(pollIntervalRef.current);
-      pollIntervalRef.current = null;
+    if (unsubMembersRef.current) {
+      unsubMembersRef.current();
+      unsubMembersRef.current = null;
     }
-    setTimeout(() => {
-      setLocationStatus('idle');
-    }, 0);
+    if (unsubMessagesRef.current) {
+      unsubMessagesRef.current();
+      unsubMessagesRef.current = null;
+    }
+    setLocationStatus('idle');
   }
 
   // Reset and request location permission again
@@ -109,23 +145,20 @@ export default function FamilyMapPage() {
     }, 100);
   }
 
-  // Push local location coordinates to DB
+  // Push local location coordinates to Firestore
   async function updateMyLocationOnServer(lat: number, lng: number) {
     if (!groupCode || !deviceId || !userName) return;
     try {
-      await fetch('/api/family/update', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          groupCode,
-          deviceId,
-          name: userName,
-          latitude: lat,
-          longitude: lng,
-        }),
-      });
+      const memberRef = doc(db, 'groups', groupCode, 'members', deviceId);
+      await setDoc(memberRef, {
+        deviceId,
+        name: userName,
+        latitude: lat,
+        longitude: lng,
+        updatedAt: new Date().toISOString(),
+      }, { merge: true });
     } catch (err) {
-      console.warn('Sunucuya konum gönderilemedi:', err);
+      console.warn('Firebase\'e konum gönderilemedi:', err);
     }
   }
 
@@ -223,7 +256,6 @@ export default function FamilyMapPage() {
           setMyLocation({ lat, lng });
           try {
             await updateMyLocationOnServer(lat, lng);
-            await fetchGroupMembers();
           } catch (err) {
             console.warn('Konum güncellenemedi:', err);
           }
@@ -291,13 +323,12 @@ export default function FamilyMapPage() {
               setMyLocation({ lat: newLatLng.lat, lng: newLatLng.lng });
               try {
                 await updateMyLocationOnServer(newLatLng.lat, newLatLng.lng);
-                await fetchGroupMembers();
               } catch (err) {
                 console.warn('Konum güncellenemedi:', err);
               }
             } else {
-              // Revert marker to previous position from DB
-              fetchGroupMembers();
+              // Revert marker to previous position from state
+              updateMapMarkers(members);
             }
           });
         }
@@ -307,37 +338,82 @@ export default function FamilyMapPage() {
     });
   }
 
-  // Fetch all coordinates in group
-  async function fetchGroupMembers() {
+  // Subscribe to group member coordinates in Firestore
+  function subscribeToGroupMembers() {
     if (!groupCode) return;
+
+    if (unsubMembersRef.current) {
+      unsubMembersRef.current();
+    }
+
+    const membersRef = collection(db, 'groups', groupCode, 'members');
+    unsubMembersRef.current = onSnapshot(membersRef, (snapshot) => {
+      const memberList: Member[] = [];
+      snapshot.forEach((doc) => {
+        memberList.push(doc.data() as Member);
+      });
+      setMembers(memberList);
+      updateMapMarkers(memberList);
+    }, (err) => {
+      console.warn('Grup üyeleri dinlenemedi:', err);
+    });
+  }
+
+  // Subscribe to real-time chat messages in Firestore
+  function subscribeToMessages() {
+    if (!groupCode) return;
+
+    if (unsubMessagesRef.current) {
+      unsubMessagesRef.current();
+    }
+
+    const messagesRef = collection(db, 'groups', groupCode, 'messages');
+    const q = query(messagesRef, orderBy('createdAt', 'asc'));
+
+    unsubMessagesRef.current = onSnapshot(q, (snapshot) => {
+      const msgList: ChatMessage[] = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        msgList.push({
+          id: doc.id,
+          senderName: data.senderName,
+          deviceId: data.deviceId,
+          text: data.text,
+          createdAt: data.createdAt,
+        });
+      });
+      setMessages(msgList);
+    }, (err) => {
+      console.warn('Mesajlar dinlenemedi:', err);
+    });
+  }
+
+  // Send a chat message to Firestore
+  async function handleSendMessage(e?: React.FormEvent, customText?: string) {
+    if (e) e.preventDefault();
+    const textToSend = customText !== undefined ? customText : messageText;
+    if (!textToSend.trim() || !groupCode || !deviceId || !userName) return;
+
     try {
-      const res = await fetch(`/api/family/members?groupCode=${encodeURIComponent(groupCode)}`);
-      if (res.ok) {
-        const json = await res.json();
-        if (json.success) {
-          setMembers(json.data);
-          updateMapMarkers(json.data);
-        }
+      const messagesRef = collection(db, 'groups', groupCode, 'messages');
+      await addDoc(messagesRef, {
+        senderName: userName,
+        deviceId,
+        text: textToSend.trim(),
+        createdAt: serverTimestamp(),
+      });
+      if (customText === undefined) {
+        setMessageText('');
       }
     } catch (err) {
-      console.warn('Grup üyeleri çekilemedi:', err);
+      console.warn('Mesaj gönderilemedi:', err);
     }
   }
 
-  // Manual update triggers getCurrentPosition once and updates DB, then polls members
+  // Manual update triggers getCurrentPosition once and updates Firestore
   async function handleManualUpdate() {
     if (!isInGroup) return;
     setIsUpdating(true);
-
-    const fetchLatest = async () => {
-      try {
-        await fetchGroupMembers();
-      } catch (err) {
-        console.warn('Grup üyeleri çekilemedi:', err);
-      } finally {
-        setIsUpdating(false);
-      }
-    };
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -347,14 +423,14 @@ export default function FamilyMapPage() {
           try {
             await updateMyLocationOnServer(latitude, longitude);
           } catch (err) {
-            console.warn('Sunucuya konum gönderilemedi:', err);
+            console.warn('Konum güncellenemedi:', err);
+          } finally {
+            setIsUpdating(false);
           }
-          await fetchLatest();
         },
         async (error) => {
           console.error('Geolocation manual fetch error:', error);
-          // Even if geolocation fails/denied, try to fetch others
-          await fetchLatest();
+          setIsUpdating(false);
         },
         {
           enableHighAccuracy: true,
@@ -363,11 +439,11 @@ export default function FamilyMapPage() {
         }
       );
     } else {
-      await fetchLatest();
+      setIsUpdating(false);
     }
   }
 
-  // Start watching location and polling members
+  // Start watching location and set up Firestore real-time listeners
   async function startTrackingAndPolling() {
     if (!navigator.geolocation) {
       setTimeout(() => {
@@ -418,9 +494,9 @@ export default function FamilyMapPage() {
       }
     );
 
-    // 3. Initial fetch & Setup polling interval for group members (every 8 seconds)
-    fetchGroupMembers();
-    pollIntervalRef.current = setInterval(fetchGroupMembers, 8000);
+    // 3. Start Firestore real-time listeners for members and chat messages
+    subscribeToGroupMembers();
+    subscribeToMessages();
   }
 
   // Initialize now state on mount
@@ -520,7 +596,15 @@ export default function FamilyMapPage() {
   const handleLeaveGroup = async () => {
     if (!confirm('Gruptan ayrılmak ve konum paylaşımını durdurmak istediğinize emin misiniz?')) return;
 
-    // Call delete API
+    // Remove local user from Firestore members
+    try {
+      const memberRef = doc(db, 'groups', groupCode, 'members', deviceId);
+      await deleteDoc(memberRef);
+    } catch (err) {
+      console.warn('Firebase\'den çıkış yapılamadı:', err);
+    }
+
+    // Also try API call for fallback/logging
     try {
       await fetch('/api/family/leave', {
         method: 'POST',
@@ -528,10 +612,11 @@ export default function FamilyMapPage() {
         body: JSON.stringify({ groupCode, deviceId }),
       });
     } catch (e) {
-      console.warn(e);
+      // Silently ignore API failure
     }
 
-    // Clean up local maps
+    // Clean up local maps and listeners
+    stopTrackingAndPolling();
     Object.keys(markersRef.current).forEach(id => {
       markersRef.current[id].remove();
     });
@@ -546,8 +631,16 @@ export default function FamilyMapPage() {
     
     setMyLocation(null);
     setMembers([]);
+    setMessages([]);
     setIsInGroup(false);
   };
+
+  // Auto-scroll to bottom of chat when new messages arrive
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
 
   // Format date helper and stale check functions moved outside the component for purity
 
@@ -783,6 +876,75 @@ export default function FamilyMapPage() {
                   Grupta henüz kimse yok. Ailenize grup kodunu gönderin.
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Real-time Group Chat */}
+          <div className="card">
+            <div className={styles.chatSection}>
+              <div className={styles.chatHeader}>
+                <h4 className={styles.chatTitle}>
+                  <svg className={styles.chatTitleIcon} viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" style={{ marginRight: '6px' }}>
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                  Grup Sohbeti
+                </h4>
+              </div>
+
+              <div className={styles.chatMessages}>
+                {messages.length > 0 ? (
+                  messages.map((msg) => {
+                    const isMe = msg.deviceId === deviceId;
+                    const timeString = msg.createdAt && msg.createdAt.seconds
+                      ? new Date(msg.createdAt.seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                      : '';
+
+                    return (
+                      <div key={msg.id} className={`${styles.messageRow} ${isMe ? styles.messageRowMe : styles.messageRowOther}`}>
+                        <div className={`${styles.messageBubble} ${isMe ? styles.messageBubbleMe : styles.messageBubbleOther}`}>
+                          {!isMe && <span className={`${styles.messageSender} ${styles.messageSenderOther}`}>{msg.senderName}</span>}
+                          <span className={styles.messageText}>{msg.text}</span>
+                          <span className={styles.messageTime}>{timeString}</span>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div className={styles.emptyChat}>
+                    Henüz mesaj yok. Grubunuza ilk mesajı siz gönderin!
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+
+              {/* Quick Template Chips */}
+              <div className={styles.quickTemplates}>
+                {quickTemplates.map((tpl, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={(e) => handleSendMessage(e, tpl)}
+                    className={styles.quickTemplateChip}
+                  >
+                    {tpl}
+                  </button>
+                ))}
+              </div>
+
+              {/* Chat Input Form */}
+              <form onSubmit={(e) => handleSendMessage(e)} className={styles.chatForm}>
+                <input
+                  type="text"
+                  placeholder="Mesajınızı yazın..."
+                  value={messageText}
+                  onChange={(e) => setMessageText(e.target.value)}
+                  className={styles.chatInput}
+                  maxLength={200}
+                />
+                <button type="submit" className={styles.chatSendBtn} disabled={!messageText.trim()}>
+                  Gönder
+                </button>
+              </form>
             </div>
           </div>
 
