@@ -145,7 +145,25 @@
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.02);
 }
 
+.unreadBadge {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 9999px;
+  padding: 2px 6px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Ensure navItem is position relative for badge */
 .navItem {
+  position: relative;
+}
+
   display: flex;
   flex-direction: column;
   align-items: center;

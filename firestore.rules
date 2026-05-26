@@ -1,0 +1,112 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // This security rules file assumes the following data structures:
+    //
+    // Collection: groups/{groupCode}/members
+    // Document ID: deviceId (e.g. dev_xxxx)
+    // Fields:
+    //   - deviceId: string (required, must match document ID)
+    //   - name: string (required, 1-15 characters)
+    //   - latitude: number (required)
+    //   - longitude: number (required)
+    //   - updatedAt: string (required, ISO 8601 string)
+    //
+    // Collection: groups/{groupCode}/messages
+    // Document ID: auto-generated message ID
+    // Fields:
+    //   - senderName: string (required, 1-15 characters)
+    //   - deviceId: string (required)
+    //   - text: string (required, 1-1000 characters)
+    //   - createdAt: timestamp (required, server timestamp)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    // Validate required fields exist
+    function hasRequiredFields(data, fields) {
+      return data.keys().hasAll(fields);
+    }
+
+    // Validate that the document contains only the allowed fields
+    function hasOnlyAllowedFields(data, fields) {
+      return data.keys().hasOnly(fields);
+    }
+
+    // Validate string length
+    function validStringLength(str, minLen, maxLen) {
+      return str is string && str.size() >= minLen && str.size() <= maxLen;
+    }
+
+    // Validate ISO 8601 date string format (YYYY-MM-DDTHH:MM:SS)
+    // Double backslashes used for digit checking compilation in security rules
+    function isValidDateString(dateStr) {
+      return dateStr is string &&
+        dateStr.matches("^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.*Z?$");
+    }
+
+    // ===============================================================
+    // Domain Validators
+    // ===============================================================
+
+    // Validate member document format
+    function isValidMember(data) {
+      return hasRequiredFields(data, ['deviceId', 'name', 'latitude', 'longitude', 'updatedAt']) &&
+             hasOnlyAllowedFields(data, ['deviceId', 'name', 'latitude', 'longitude', 'updatedAt']) &&
+             data.deviceId is string && data.deviceId.size() > 0 && data.deviceId.size() <= 100 &&
+             validStringLength(data.name, 1, 15) &&
+             data.latitude is number &&
+             data.longitude is number &&
+             isValidDateString(data.updatedAt);
+    }
+
+    // Validate chat message document format
+    function isValidMessage(data) {
+      return hasRequiredFields(data, ['senderName', 'deviceId', 'text', 'createdAt']) &&
+             hasOnlyAllowedFields(data, ['senderName', 'deviceId', 'text', 'createdAt']) &&
+             validStringLength(data.senderName, 1, 15) &&
+             data.deviceId is string && data.deviceId.size() > 0 && data.deviceId.size() <= 100 &&
+             validStringLength(data.text, 1, 1000) &&
+             (data.createdAt == request.time || data.createdAt is timestamp);
+    }
+
+    // Default deny for all documents
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Rules for groups subcollections
+    match /groups/{groupCode} {
+      
+      match /members/{deviceId} {
+        // Allow reading members of a group to anyone
+        allow read: if true;
+        
+        // Allow creating/updating own member document
+        allow create, update: if isValidMember(request.resource.data) && deviceId == request.resource.data.deviceId;
+        
+        // Allow leaving the group (deleting own member document)
+        allow delete: if deviceId == resource.data.deviceId;
+      }
+
+      match /messages/{messageId} {
+        // Allow reading messages in a group to anyone
+        allow read: if true;
+        
+        // Allow sending a message
+        allow create: if isValidMessage(request.resource.data);
+        
+        // Messages are immutable once sent
+        allow update, delete: if false;
+      }
+    }
+  }
+}

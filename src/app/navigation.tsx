@@ -5,12 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from './theme-provider';
 import styles from './navigation.module.css';
+import { useChat } from './chat-provider';
 
 export default function Navigation({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isSupported, setIsSupported] = useState(false);
+  const { unreadCount } = useChat();
+
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -188,13 +190,14 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
           <span>Sayaç</span>
         </Link>
 
-        <Link href="/yasaklar" className={`${styles.navItem} ${pathname === '/yasaklar' ? styles.activeNav : ''}`}>
+        <Link href="/sohbet" className={`${styles.navItem} ${pathname === '/sohbet' ? styles.activeNav : ''}`}>
           <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none">
-            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-            <line x1="12" y1="9" x2="12" y2="13" />
-            <line x1="12" y1="17" x2="12.01" y2="17" />
+            <path d="M21 11.5a8.38 8.38 0 0 0-1.71-5.09L12 2 4.71 6.41a8.38 8.38 0 0 0-1.71 5.09v5.5c0 .79.32 1.54.88 2.08L6 21l5-3h5c.79 0 1.54-.32 2.08-.88L21 12.5z" />
           </svg>
-          <span>Yasaklar</span>
+          <span>Grup Sohbet</span>
+          {unreadCount > 0 && (
+            <span className={styles.unreadBadge}>{unreadCount}</span>
+          )}
         </Link>
 
         <Link href="/aile" className={`${styles.navItem} ${pathname === '/aile' ? styles.activeNav : ''}`}>

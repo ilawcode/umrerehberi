@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { ThemeProvider } from './theme-provider';
+import { ChatProvider } from './chat-provider';
 import Navigation from './navigation';
 
 export const metadata: Metadata = {
@@ -46,7 +47,9 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <Navigation>{children}</Navigation>
+          <ChatProvider>
+            <Navigation>{children}</Navigation>
+          </ChatProvider>
         </ThemeProvider>
       </body>
     </html>
