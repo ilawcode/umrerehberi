@@ -221,3 +221,76 @@ export const defaultSteps = [
     prayers: ["Tıraş Olurken / İhramdan Çıkarken Okunacak Dua"]
   }
 ];
+
+export const defaultPlaces = [
+  {
+    title: "Mescid-i Haram ve Kabe",
+    description: "Yeryüzünde inşa edilen ilk mabed olan Kabe'yi çevreleyen Mescid-i Haram, tavaf ibadetinin yapıldığı, umrenin kalbi olan kutsal alandır.",
+    city: "Mekke",
+    importance: "Müslümanların kıblesidir. Burada kılınan bir namaz, diğer mescitlerde kılınan yüz bin namazdan daha faziletlidir.",
+    order: 1
+  },
+  {
+    title: "Arafat (Cebel-i Rahme)",
+    description: "Mekke'nin 25 km güneydoğusunda bulunan, Hac ibadetinin en önemli rüknü olan vakfenin yapıldığı geniş düzlük ve bu düzlükteki merhamet tepesidir.",
+    city: "Mekke",
+    importance: "Âdem ile Havva validemizin yeryüzünde buluştuğu yerdir. Peygamber Efendimiz (s.a.v.) Veda Hutbesi'ni burada irat etmiştir.",
+    order: 2
+  },
+  {
+    title: "Hira Mağarası (Cebel-i Nur)",
+    description: "Peygamber Efendimiz'e (s.a.v.) ilk vahyin geldiği, Nur Dağı'nın zirvesine yakın bir konumda bulunan kutsal mağaradır.",
+    city: "Mekke",
+    importance: "Kur'an-ı Kerim'in 'Oku!' (Alak Suresi) emriyle başlayan ilk ayetleri burada indirilmiştir. İslam'ın doğuş noktasıdır.",
+    order: 3
+  },
+  {
+    title: "Sevr Mağarası (Cebel-i Sevr)",
+    description: "Hicret esnasında Peygamber Efendimiz (s.a.v.) ve Hz. Ebu Bekir'in Mekkeli müşriklerden gizlenmek için üç gün süreyle sığındıkları mağaradır.",
+    city: "Mekke",
+    importance: "İslam tarihinde sadakat ve tevekkülün simgesi olan, örümcek ağı ve güvercin yuvası mucizesinin yaşandığı yerdir.",
+    order: 4
+  },
+  {
+    title: "Cennetü'l-Mualla",
+    description: "Mekke'nin en eski ve tarihi mezarlığıdır. Peygamber Efendimiz'in (s.a.v.) dedesi, amcası Ebu Talib ve eşi Hz. Hatice validemiz burada medfundur.",
+    city: "Mekke",
+    importance: "İslam'ın ilk dönemlerindeki birçok değerli sahabe ve ehli beyt mensubunun kabrine ev sahipliği yapar.",
+    order: 5
+  },
+  {
+    title: "Mescid-i Nebevi",
+    description: "Peygamber Efendimiz (s.a.v.) tarafından Medine'ye hicretinden sonra inşa edilen, kabr-i şerifinin (Ravza-i Mutahhara) de içinde bulunduğu kutsal mesciddir.",
+    city: "Medine",
+    importance: "Müslümanlarca kutsal kabul edilen üç mescidden ikincisidir. Burada kılınan bir namaz, diğer yerlerdeki bin namazdan hayırlıdır.",
+    order: 6
+  },
+  {
+    title: "Kuba Mescidi",
+    description: "Peygamber Efendimiz'in (s.a.v.) Mekke'den Medine'ye hicreti sırasında Medine yakınlarındaki Kuba köyünde inşa ettirdiği, İslam'da yapılan ilk mesciddir.",
+    city: "Medine",
+    importance: "Burada abdestli olarak iki rekat namaz kılmanın bir umre sevabına denk olduğu Peygamber Efendimiz tarafından müjdelenmiştir.",
+    order: 7
+  },
+  {
+    title: "Mescid-i Kıbleteyn",
+    description: "Kıblenin Kudüs'teki Mescid-i Aksa'dan Mekke'deki Kabe-i Muazzama'ya çevrilmesi emrinin nazil olduğu tarihi iki kıbleli mesciddir.",
+    city: "Medine",
+    importance: "Namaz esnasında yönün Kudüs'ten Kabe'ye dönüştürüldüğü, vahyin fiziksel olarak uygulandığı eşsiz bir mekandır.",
+    order: 8
+  },
+  {
+    title: "Uhud Dağı ve Şehitliği",
+    description: "Medine'nin kuzeyinde bulunan, İslam tarihinin en önemli savaşlarından Uhud Savaşı'nın gerçekleştiği dağ ve şehitlerin yattığı alandır.",
+    city: "Medine",
+    importance: "Başta Peygamber Efendimiz'in amcası Hz. Hamza olmak üzere 70 Uhud şehidinin kabri burada bulunmaktadır.",
+    order: 9
+  },
+  {
+    title: "Cennetü'l-Baki",
+    description: "Mescid-i Nebevi'nin hemen yanında bulunan, Medine'nin en eski ve kutsal mezarlığıdır. Yaklaşık 10 bin sahabenin burada gömülü olduğu bilinmektedir.",
+    city: "Medine",
+    importance: "Hz. Osman, Hz. Hasan, Hz. Aişe başta olmak üzere Peygamber Efendimiz'in eşleri, çocukları ve yakın dostları burada yatmaktadır.",
+    order: 10
+  }
+];

@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/db';
 import Prayer from '@/models/Prayer';
 import Rule from '@/models/Rule';
-import { defaultPrayers, defaultRules } from '@/lib/seedData';
+import Place from '@/models/Place';
+import { defaultPrayers, defaultRules, defaultPlaces } from '@/lib/seedData';
 
 export async function GET() {
   try {
@@ -21,13 +22,21 @@ export async function GET() {
       await Rule.insertMany(defaultRules);
       rulesAdded = defaultRules.length;
     }
+
+    const placeCount = await Place.countDocuments();
+    let placesAdded = 0;
+    if (placeCount === 0) {
+      await Place.insertMany(defaultPlaces);
+      placesAdded = defaultPlaces.length;
+    }
     
     return NextResponse.json({ 
       success: true, 
       message: 'Veritabanı kontrol edildi/güncellendi.',
       stats: {
         prayers: { total: await Prayer.countDocuments(), added: prayersAdded },
-        rules: { total: await Rule.countDocuments(), added: rulesAdded }
+        rules: { total: await Rule.countDocuments(), added: rulesAdded },
+        places: { total: await Place.countDocuments(), added: placesAdded }
       }
     });
   } catch (error: any) {
