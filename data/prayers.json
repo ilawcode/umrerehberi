@@ -1,0 +1,162 @@
+[
+  {
+    "title": "Umre Niyeti (Hanafi Fıkhına Göre Niyet)",
+    "arabic": "اللَّهُمَّ إِنِّي أُرِيدُ الْعُمْرَةَ فَيَسِّرْهَا لِي وَتَقَبَّلْهَا مِنِّي",
+    "transliteration": "Allahümme innî ürîdü'l-umrete fe-yessirhâ lî ve teqabbelhâ minnî.",
+    "translation": "Allah'ım! Ben umre yapmak istiyorum. Onu bana kolaylaştır ve benden kabul eyle. (Hanefi mezhebinde niyet kalben yapılsa da dil ile ikrar edilmesi müstehaptır ve ihramın şartlarındandır.)",
+    "category": "ihram",
+    "order": 1
+  },
+  {
+    "title": "Telbiye (İhrama Giriş Şartı)",
+    "arabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ",
+    "transliteration": "Lebbeyk Allahümme lebbeyk, lebbeyke lâ şerîke leke lebbeyk, innel hamde ve'n-ni'mete leke ve'l-mülk, lâ şerîke lek.",
+    "translation": "Buyur Allah'ım buyur! Buyur, senin hiçbir ortağın yoktur, buyur! Şüphesiz hamd de, nimet de, mülk de sana aittir. Senin hiçbir ortağın yoktur. (Niyetle birlikte telbiye getirmek Hanefi mezhebinde ihramın rüknüdür.)",
+    "category": "ihram",
+    "order": 2
+  },
+  {
+    "title": "Mescid-i Haram'a Giriş Duası",
+    "arabic": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ. بِسْمِ اللَّهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ",
+    "transliteration": "Allahümme'ftah lî ebvâbe rahmetik. Bismillâhi ve's-salâtü ve's-selâmü alâ Rasûlillâh.",
+    "translation": "Allah'ım! Bana rahmetinin kapılarını aç. Allah'ın adıyla. Salât ve selâm Resûlullah'ın üzerine olsun.",
+    "category": "general",
+    "order": 3
+  },
+  {
+    "title": "Kabe'yi İlk Görünce Okunacak Dua",
+    "arabic": "اللَّهُمَّ زِدْ هَذَا الْبَيْتَ تَشْرِIFًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً، وَزِدْ مَنْ شَرَّفَهُ وَعَظَّمَهُ مِمَّنْ حَجَّهُ أَوِ اعْتَمَرَهُ تَشْرِيفًا وَتَكْرِيمًا وَتَعْظِيمًا وَبِرًّا. اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، فَحَيِّنَا رَبَّنَا بِالسَّلَامِ",
+    "transliteration": "Allahümme zid hâze'l-beyte teşrîfen ve ta'zîmen ve tekrîmen ve mehâbeten, ve zid men şerrefehû ve azzamehû mimmen haccehû evi'temerehû teşrîfen ve tekrîmen ve ta'zîmen ve birran. Allahümme ente's-selâmü ve minke's-selâmü fe-hayyinâ rabbenâ bi's-selâm.",
+    "translation": "Allah'ım! Bu mabedin şerefini, azametini, saygınlığını ve heybetini artır. Ona hac ve umre ile ta'zim edenlerin de şerefini, saygınlığını, azametini ve iyiliğini artır. Allah'ım! Sen esenlik verensin, esenlik sendendir. Rabbimiz, bizi esenlikle yaşat. (Kabe ilk görüldüğünde yapılan duaların kabul olacağı bildirilmiştir.)",
+    "category": "general",
+    "order": 4
+  },
+  {
+    "title": "Tavaf Niyeti (Her Tavaf İçin Şarttır)",
+    "arabic": "اللَّهُمَّ إِنِّي أُرِيدُ طَوَافَ بَيْتِكَ الْحَرَامِ سَبْعَةَ أَشْوَاطٍ فَيَسِّرْهُ لِي وَتَقَبَّلهُ مِنِّي",
+    "transliteration": "Allahümme innî ürîdü tavâfe beytike'l-harâmi seb'ate eşvâtın feyessirhü lî ve teqabbelhü minnî.",
+    "translation": "Allah'ım! Senin Beyt-i Haram'ını yedi şavt olarak tavaf etmek istiyorum. Onu bana kolaylaştır ve benden kabul eyle. (Hanefi mezhebinde tavafın geçerli olması için niyet etmek şarttır.)",
+    "category": "tawaf",
+    "order": 5
+  },
+  {
+    "title": "Tavafa Başlarken Hacerü'l-Esved'i Selamlama (İstila)",
+    "arabic": "بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ، اللَّهُمَّ إِيمَانًا بِكَ وَتَصْدِيقًا بِكِتَابِكَ وَوَفَاءً بِعَهْدِكَ وَاتِّبَاعًا لِسُنَّةِ نَبِيِّكَ مُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+    "transliteration": "Bismillâhi vallâhü ekber. Allâhümme îmânen bike ve tasdîqan bi-kitâbike ve vefâen bi-ahdike vettibâan li-sünneti nebiyyike Muhammedin sallallâhü aleyhi ve sellem.",
+    "translation": "Allah'ın adıyla, Allah en büyüktür. Allah'ım! Sana inanarak, kitabını tasdik ederek, sana verdiğim söze bağlı kalarak ve Peygamberin Muhammed'in (s.a.v.) sünnetine uyarak başlıyorum.",
+    "category": "tawaf",
+    "order": 6
+  },
+  {
+    "title": "Tavaf Esnasında Okunacak Dua (Rükn-i Yemani ile Hacerü'l-Esved Arası)",
+    "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ. وَأَدْخِلْنَا الْجَنَّةَ مَعَ الْأَبْرَارِ، يَا عَزِيزُ يَا غَفَّارُ يَا رَبَّ الْعَالَمِينَ",
+    "transliteration": "Rabbenâ âtinâ fi'd-dünyâ haseneten ve fi'l-âhireti haseneten ve qınâ azâbe'n-nâr. Ve edhilne'l-cennete mea'l-ebrâr, yâ Azîzü yâ Ghaffâru yâ Rabbe'l-âlemîn.",
+    "translation": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi cehennem azabından koru. Bizi iyilerle birlikte cennete koy. Ey üstün olan, ey günahları bağışlayan, ey alemlerin Rabbi! (Bu iki rükün arasında bu duayı okumak Peygamberimizden nakledilen masnun bir duadır.)",
+    "category": "tawaf",
+    "order": 7
+  },
+  {
+    "title": "Hicr-i İsmail (Hatim) Duası",
+    "arabic": "اللَّهُمَّ هَذَا مَقَامُ الْعَائِذِ بِكَ مِنَ النَّارِ. اللَّهُمَّ اغْفِرْ لِي ذُنُوبِي كُلَّهَا، دِقَّهَا وَجِلَّهَا، وَأَوَّلَهَا وَآخِرَهَا، وَعَلَانِيَتَهَا وَسِرَّهَا",
+    "transliteration": "Allahümme hâzâ meqâmü'l-âizi bike mine'n-nâr. Allahümme'ghfir lî zünûbî küllehâ, diqqahâ ve cillehâ, ve evvelehâ ve âhirehâ, ve alâniyetehâ ve sırrahâ.",
+    "translation": "Allah'ım! Burası cehennem ateşinden sana sığınanların makamıdır. Allah'ım! Günahlarımın küçüğünü büyüğünü, ilkini sonunu, açığını ve gizlisini, hepsini bağışla. (Hatim Kabe'nin içinden sayıldığı için burada namaz kılıp dua etmek çok faziletlidir.)",
+    "category": "tawaf",
+    "order": 8
+  },
+  {
+    "title": "Multazam Duası (Kabe Kapısı ile Hacerü'l-Esved Arası)",
+    "arabic": "يَا رَبَّ الْبَيْتِ الْعَتِيقِ، أَعْتِقْ رِقَابَنَا وَرِقَابَ آبَائِنَا وَأُمَّهَاتِنَا وَإِخْوَانِنَا مِنَ النَّارِ، يَا ذَا الْجُودِ وَالْكَرَمِ وَالْفَضْلِ وَالْمَنِّ وَالْعَطَاءِ وَالْإِحْسَانِ",
+    "transliteration": "Yâ Rabbe'l-Beyti'l-Atîq, a'tiq riqâbenâ ve riqâbe âbâinâ ve ümmehâtinâ ve ihvâninâ mine'n-nâr, yâ Ze'l-cûdi ve'l-keremi ve'l-fadli ve'l-menni ve'l-atâi ve'l-ihsân.",
+    "translation": "Ey Eski Ev'in (Kâbe'nin) Rabbi! Bizlerin, babalarımızın, annelerimizin ve kardeşlerimizin boyunlarını cehennem ateşinden azat eyle! Ey cömertlik, kerem, lütuf, ihsan ve bağış sahibi! (Multazam duvarına sarılarak içtenlikle ağlayıp dua etmek müstehaptır.)",
+    "category": "tawaf",
+    "order": 9
+  },
+  {
+    "title": "Tavaf Namazı Sonrası (Makam-ı İbrahim Arkasında) Okunacak Dua",
+    "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ. اللَّهُمَّ اجْعَلْهُ عِلْمًا نَافِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ",
+    "transliteration": "Allahümme innî es'elüke'l-afve ve'l-âfiyete fi'd-dünyâ ve'l-âhireh. Allahümme'c-alhu ilmen nâfian ve rızqan vâsian ve şifâen min külli dâ'.",
+    "translation": "Allah'ım! Senden dünyada da ahirette de af ve afiyet dilerim. Allah'ım! Tavafımı kabul eyle, günahlarımı bağışla ve bana hayırlar lütfeyle. (Hanefi mezhebine göre tavaftan sonra 2 rekat tavaf namazı kılmak vaciptir.)",
+    "category": "tawaf",
+    "order": 10
+  },
+  {
+    "title": "Zemzem Suyu İçerken Okunacak Dua",
+    "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ وَسَقَمٍ",
+    "transliteration": "Allahümme innî es'elüke ilmen nâfian ve rızqan vâsian ve şifâen min külli dâin ve seqam.",
+    "translation": "Allah'ım! Senden faydalı ilim, bol rızık ve her türlü dert ile hastalıktan şifa diliyorum. (Peygamber efendimiz zemzem suyunun ne niyetle içilirse ona şifa olacağını bildirmiştir.)",
+    "category": "general",
+    "order": 11
+  },
+  {
+    "title": "Safa Tepesine Yönelirken Okunacak Ayet",
+    "arabic": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ ۖ فَمَنْ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَا ۚ وَمَن تَطَوَّعَ خَيْرًا فَإِنَّ اللَّهَ شَاكِرٌ عَلِيمٌ",
+    "transliteration": "İnne's-Safâ ve'l-Mervete min şeâirillâh. Femen hacce'l-beyte evi'temere felâ cünâha aleyhi en yettavvefe bihimâ. Ve men tetavvaa hayran fe-innallâhe şâkirun alîm.",
+    "translation": "Şüphesiz Safa ile Merve, Allah'ın nişanelerindendir. Kim Kabe'yi hacceder veya umre yaparsa, o ikisini tavaf etmesinde (aralarında sa'y etmesinde) bir beis yoktur. Kim gönlünden gelerek bir iyilik yaparsa, şüphesiz Allah şükrün karşılığını verendir, hakkıyla bilendir. (Bakara, 158)",
+    "category": "say",
+    "order": 12
+  },
+  {
+    "title": "Safa ve Merve Tepelerinde Kabe'ye Dönerek Yapılacak Dua",
+    "arabic": "اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ وَلِلَّهِ الْحَمْدُ. لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُVOَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+    "transliteration": "Allahü ekber, Allahü ekber, Allahü ekber ve lillâhi'l-hamd. Lâ ilâhe illallâhü vahdehû lâ şerîke leh, lehü'l-mülkü ve lehü'l-hamdü ve hüve alâ külli şey'in qadîr.",
+    "translation": "Allah en büyüktür, Allah en büyüktür, Allah en büyüktür, hamd Allah'a mahsustur. Allah'tan başka ilah yoktur, O tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır ve O her şeye kadirdir. (Safa ve Merve tepelerinde kıbleye yönelerek üçer kere tekbir ve tehlil getirilip dua edilmesi sünnettir.)",
+    "category": "say",
+    "order": 13
+  },
+  {
+    "title": "Sa'y Esnasında (Özellikle İki Yeşil Sütun/Işık Arasında) Okunacak Dua",
+    "arabic": "رَبِّ اغْفِرْ وَارْحَمْ وَتَجَاوَزْ عَمَّا تَعْلَمْ، إِنَّكَ أَنْتَ الْأَعَزُّ الْأَكْرَمُ. اللَّهُمَّ اجْعَلْهُ حَجًّا مَبْرُورًا وَذَنْبًا مَغْفُورًا وَسَعْيًا مَشْكُورًا",
+    "transliteration": "Rabbighfir verham ve tecâvez ammâ ta'lem, inneke ente'l-eazzü'l-ekrem. Allahümme'c-alhu haccen mebrûran ve zenben maghfûran ve sa'yen meşkûra.",
+    "translation": "Rabbim! Bağışla, merhamet et, bildiğin kusurlarımızı geçiver, şüphesiz sen en yüce ve en cömert olansın. Allah'ım! Bunu kabul olunmuş bir ibadet, bağışlanmış bir günah ve şükre layık bir sa'y eyle. (Erkeklerin iki yeşil sütun arasında hızlı adımlarla koşması (hervele) sünnettir.)",
+    "category": "say",
+    "order": 14
+  },
+  {
+    "title": "Tıraş Olup İhramdan Çıkarken Okunacak Dua",
+    "arabic": "الْحَمْدُ لِلَّهِ الَّذِي قَضَى عَنَّا نُسُكَنَا. اللَّهُمَّ اجْعَلْ لِكُلِّ شَعْرَةٍ نُورًا يَوْمَ الْقِيَامَةِ وَاغْفِرْ لِي ذُنُوبِي",
+    "transliteration": "Elhamdü lillâhillezî qadâ annâ nüsûkenâ. Allahümme'c-al li-külli şa'ratin nûran yevme'l-qiyâmeti va'ghfir lî zünûbî.",
+    "translation": "İbadetlerimizi yapmayı bize nasip eden Allah'a hamdolsun. Allah'ım! Kıyamet gününde her bir saç telimi benim için bir nur kıl ve günahlarımı bağışla. (Hanefi mezhebinde ihramdan çıkmak için saçların en az 1/4'ünün traş edilmesi veya kısaltılması vaciptir.)",
+    "category": "ihram",
+    "order": 15
+  },
+  {
+    "title": "Mescid-i Nebevi'ye (Medine-i Münevvere) Giriş Duası",
+    "arabic": "بِسْمِ اللَّهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ. اللَّهُمَّ افْتَحْ لِي أَبْوَابَ فَضْلِكَ وَرَحْمَتِكَ",
+    "transliteration": "Bismillâhi ve's-salâtü ve's-selâmü alâ Rasûlillâh. Allahümme'ftah lî ebvâbe fadlike ve rahmetik.",
+    "translation": "Allah'ın adıyla, salât ve selâm Resûlullah'ın üzerine olsun. Allah'ım! Bana lütfunun ve rahmetinin kapılarını aç.",
+    "category": "visit",
+    "order": 16
+  },
+  {
+    "title": "Hz. Peygamber Efendimiz'in (s.a.v.) Kabri Huzurunda Selam",
+    "arabic": "السَّلَامُ عَلَيْكَ يَا رَسُولَ اللَّهِ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ. السَّلَامُ عَلَيْكَ يَا نَبِيَّ اللَّهِ وَخِيرَتَهُ مِنْ خَلْقِهِ",
+    "transliteration": "Es-selâmü aleyke yâ Rasûlallâh ve rahmetullâhi ve berakâtüh. Es-selâmü aleyke yâ Nebiyyallâh ve hîratehû min halqih.",
+    "translation": "Selâm senin üzerine olsun ey Allah'ın Resûlü, Allah'ın rahmeti ve bereketi de senin üzerine olsun. Selâm senin üzerine olsun ey Allah'ın Peygamberi, O'nun mahlukatı içinden seçtiği yüce elçisi!",
+    "category": "visit",
+    "order": 17
+  },
+  {
+    "title": "Hz. Ebu Bekir (r.a.) ve Hz. Ömer (r.a.) Efendilerimize Selam",
+    "arabic": "السَّلَامُ عَلَيْكَ يَا أَبَا بَكْرٍ الصِّدِّيقَ. السَّلَامُ عَلَيْكَ يَا عُمَرَ بْنَ الْخَطَّابِ الْفَارُوقَ، جَزَاكُمَا اللَّهُ عَنْ رَسُولِهِ وَعَنِ الْإِسْلَامِ خَيْرًا",
+    "transliteration": "Es-selâmü aleyke yâ Ebâ Bekri's-Sıddîq. Es-selâmü aleyke yâ Ömerabne'l-Hattâbi'l-Fârûq, cezâkümallâhü an Rasûlihî ve ani'l-İslâmi hayran.",
+    "translation": "Selâm senin üzerine olsun ey Ebâ Bekir es-Sıddîq! Selâm senin üzerine olsun ey Ömer b. Hattâb el-Fârûq! Allah ikinizden de Resûlü adına ve İslam adına en hayırlı mükâfatlarla razı olsun.",
+    "category": "visit",
+    "order": 18
+  },
+  {
+    "title": "Kuba Mescidi'nde Kılınan Namaz Sonrası Dua",
+    "arabic": "اللَّهُمَّ تَقَبَّلْ مِنِّي صَلَاتِي وَاجْعَلْهَا لِي عُمْرَةً مَقْبُولَةً كَمَا وَعَدْتَنَا عَلَى لِسَانِ نَبِيِّكَ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ",
+    "transliteration": "Allahümme teqabbel minnî salâtî ve'c-al-hâ lî umreten maqbûleten kemâ vaadtenâ alâ lisâni nebiyyike sallallâhü aleyhi ve sellem.",
+    "translation": "Allah'ım! Benden namazımı kabul eyle. Peygamberinin (s.a.v.) diliyle bize vaad ettiği gibi, Kuba Mescidi'ndeki bu ziyaretimi ve namazımı benim için kabul olunmuş bir umre sevabı kıl. (Kuba Mescidi'nde kılınan namazın umre sevabına denk olduğu hadis-i şerifle sabittir.)",
+    "category": "visit",
+    "order": 19
+  },
+  {
+    "title": "Cennetü'l-Baki Kabristanlığı Ziyaret Duası",
+    "arabic": "السَّلَامُ عَلَيْكُمْ دَارَ قَوْمٍ مُؤْمِنِينَ، وَإِنَّا إِنْ شَاءَ اللَّهُ بِكُمْ لَاحِقُونَ. اللَّهُمَّ اغْفِرْ لِأَهْلِ بَقِيعِ الْغَرْقَدِ",
+    "transliteration": "Es-selâmü aleyküm dâra qavmin mü'minîn, ve innâ in şâallâhü biküm lâhiqûn. Allahümme'ghfir li-ehli Baqîi'l-Gharqad.",
+    "translation": "Selâm sizlere olsun ey müminler yurdunun sakinleri! Şüphesiz bizler de inşallah sizlere kavuşacağız. Allah'ım! Cennetü'l-Baki mezarlığında yatan sahabelere, ehli beyte ve tüm müminlere mağfiret eyle.",
+    "category": "visit",
+    "order": 20
+  }
+]

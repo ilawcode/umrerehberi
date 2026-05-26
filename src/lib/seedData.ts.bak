@@ -159,6 +159,26 @@ export const defaultPrayers = [
     category: "visit",
     order: 20
   }
+];�mızı geçiver, şüphesiz sen en yüce ve en cömert olansın. Allah'ım! Bunu kabul olunmuş bir ibadet, bağışlanmış bir günah ve şükre layık bir sa'y eyle.",
+    category: "say",
+    order: 8
+  },
+  {
+    title: "Merve Tepesinde Yapılacak Dua",
+    arabic: "لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ أَنْجَزَ وَعْدَهُ وَنَصَرَ عَبْدَهُ وَهَزَمَ الأَحْزَابَ وَحْدَهُ",
+    transliteration: "Lâ ilâhe illallâhü vahdehû lâ şerîke leh, lehü'l-mülkü ve lehü'l-hamdü yuhyî ve yumît ve hüve alâ külli şey'in qadîr. Lâ ilâhe illallâhü vahdehû enceze va'dehû ve nesara abdehû ve hezeme'l-ahzâbe vahdeh.",
+    translation: "Allah'tan başka hiçbir ilah yoktur. O tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır, O diriltir ve öldürür. O her şeye kadirdir. Yalnız tek olan Allah vardır, O vaadini yerine getirdi, kuluna yardım etti ve düşman ordularını tek başına hezimete uğrattı.",
+    category: "say",
+    order: 9
+  },
+  {
+    title: "Tıraş Olurken / İhramdan Çıkarken Okunacak Dua",
+    arabic: "الْحَمْدُ لِلَّهِ الَّذِي قَضَى عَنَّا نُسُكَنَا. اللَّهُمَّ ثَبِّتْ فِي قَلْبِي الْإِيمَانَ وَاغْفِرْ لِي ذُنُوبِي وَتَقَبَّلْ مِنِّي سَعْيِي وَتَوَافِي",
+    transliteration: "Elhamdü lillâhillezî qadâ annâ nüsûkenâ. Allahümme sebbit fî qalbî'l-îmâne va'ghfir lî zünûbî ve teqabbel minnî sa'yî ve tevâfî.",
+    translation: "İbadetlerimizi yapmayı bize nasip eden Allah'a hamdolsun. Allah'ım! Kalbimde imanı sabit kıl, günahlarımı bağışla, sa'yimi ve tavafımı benden kabul eyle.",
+    category: "ihram",
+    order: 10
+  }
 ];
 
 export const defaultRules = [

@@ -121,7 +121,8 @@ export default function DashboardPage() {
     { id: 'ihram', label: 'İhram' },
     { id: 'tawaf', label: 'Tavaf' },
     { id: 'say', label: 'Sa\'y' },
-    { id: 'general', label: 'Genel' }
+    { id: 'general', label: 'Genel' },
+    { id: 'visit', label: 'Ziyaret' }
   ];
 
   const ruleCategories = [
