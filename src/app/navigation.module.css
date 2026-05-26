@@ -1,0 +1,135 @@
+.header {
+  height: var(--header-height);
+  width: 100%;
+  max-width: 480px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kaabaIcon {
+  color: var(--primary);
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+}
+
+.themeToggle {
+  display: flex;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+}
+
+[data-theme='dark'] .themeToggle {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='sunlight'] .themeToggle {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 0;
+}
+
+.themeBtn {
+  background: transparent;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+[data-theme='sunlight'] .themeBtn {
+  border-radius: 0;
+  color: #000000;
+}
+
+.activeTheme {
+  background: var(--card-bg);
+  color: var(--primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='sunlight'] .activeTheme {
+  background: #000000;
+  color: #ffffff !important;
+}
+
+.bottomNav {
+  height: var(--nav-height);
+  width: 100%;
+  max-width: 480px;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 12px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.02);
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  flex: 1;
+  height: 100%;
+  transition: all 0.2s ease;
+}
+
+.navItem svg {
+  transition: transform 0.2s ease;
+}
+
+.navItem:active svg {
+  transform: scale(0.9);
+}
+
+.activeNav {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+[data-theme='sunlight'] .activeNav {
+  color: #000000;
+  border-bottom: 3px solid #000000;
+  padding-bottom: 2px;
+}
+
+/* Adjust main app container padding to make space for fixed header */
+:global(.app-container) {
+  padding-top: calc(var(--header-height) + 12px);
+}

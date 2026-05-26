@@ -1,0 +1,353 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modeToggle {
+  display: flex;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+}
+
+[data-theme='dark'] .modeToggle {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='sunlight'] .modeToggle {
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 0;
+  padding: 0;
+}
+
+.modeBtn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+[data-theme='sunlight'] .modeBtn {
+  border-radius: 0;
+  color: #000000;
+}
+
+.activeMode {
+  background-color: var(--card-bg);
+  color: var(--primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='sunlight'] .activeMode {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.counterCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 16px;
+  border: 1px solid var(--card-border);
+}
+
+[data-theme='sunlight'] .counterCard {
+  border: 2px solid #000000;
+}
+
+.counterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.shawtLabel {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+[data-theme='sunlight'] .shawtLabel {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.vibToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.vibOn {
+  border-color: rgba(6, 78, 59, 0.2);
+  color: var(--primary);
+  background-color: rgba(6, 78, 59, 0.03);
+}
+
+[data-theme='dark'] .vibOn {
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+[data-theme='sunlight'] .vibToggle {
+  border: 2px solid #000000;
+  border-radius: 0;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+[data-theme='sunlight'] .vibOn {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.circleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.incrementBtn {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: var(--text-on-primary);
+  border: 8px solid rgba(6, 78, 59, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(6, 78, 59, 0.3);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.incrementBtn:active {
+  transform: scale(0.92);
+  box-shadow: 0 5px 12px -5px rgba(6, 78, 59, 0.3);
+}
+
+.incrementBtn:disabled {
+  cursor: not-allowed;
+}
+
+[data-theme='dark'] .incrementBtn {
+  border-color: rgba(16, 185, 129, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);
+}
+
+[data-theme='sunlight'] .incrementBtn {
+  width: 180px;
+  height: 180px;
+  border-radius: 0;
+  background: #ffffff;
+  color: #000000;
+  border: 5px solid #000000;
+  box-shadow: none;
+}
+
+.doneBtn {
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+  border-color: rgba(217, 119, 6, 0.15);
+  box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.25);
+}
+
+[data-theme='sunlight'] .doneBtn {
+  background: #000000;
+  color: #ffffff;
+}
+
+.counterNum {
+  display: flex;
+  align-items: baseline;
+}
+
+.currentNum {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.slash {
+  font-size: 2rem;
+  opacity: 0.6;
+  margin: 0 4px;
+}
+
+.totalNum {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.doneText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.doneText span {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.infoText {
+  text-align: center;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  padding: 0 12px;
+}
+
+.successMsg {
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+[data-theme='sunlight'] .successMsg {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.actionRow {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.actionBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionBtn:active {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.actionBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+[data-theme='dark'] .actionBtn:active {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme='sunlight'] .actionBtn {
+  border: 2px solid #000000;
+  border-radius: 0;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.prayerHelper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.helperTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+[data-theme='sunlight'] .helperTitle {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.prayersList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prayerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--card-border);
+}
+
+[data-theme='sunlight'] .prayerCard {
+  border: 2px solid #000000;
+}
+
+.prayerTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+[data-theme='sunlight'] .prayerTitle {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.prayerSec {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-left: 2px solid rgba(6, 78, 59, 0.15);
+  padding-left: 10px;
+}
+
+[data-theme='dark'] .prayerSec {
+  border-left-color: rgba(16, 185, 129, 0.2);
+}
+
+[data-theme='sunlight'] .prayerSec {
+  border-left: 2px solid #000000;
+}
+
+.secLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.secText {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-primary);
+}

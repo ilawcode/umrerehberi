@@ -1,0 +1,311 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.searchBox {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--card-border);
+}
+
+.searchRow {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 12px 40px 12px 14px;
+  border: 1px solid var(--card-border);
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.searchInput:focus {
+  border-color: var(--primary);
+  background-color: var(--card-bg);
+  box-shadow: 0 0 0 2px rgba(6, 78, 59, 0.1);
+}
+
+[data-theme='dark'] .searchInput {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme='dark'] .searchInput:focus {
+  background-color: var(--card-bg);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+}
+
+[data-theme='sunlight'] .searchInput {
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  border-radius: 0;
+  color: #000000;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+[data-theme='sunlight'] .clearBtn {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.controlRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.fontSizeControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controlLabel {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.circleBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s;
+}
+
+.circleBtn:active {
+  transform: scale(0.9);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='sunlight'] .circleBtn {
+  border: 2px solid #000000;
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: 900;
+}
+
+.fontVal {
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 24px;
+  text-align: center;
+}
+
+.toggles {
+  display: flex;
+  gap: 6px;
+}
+
+.toggleBtn {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+[data-theme='sunlight'] .toggleBtn {
+  border: 2px solid #000000;
+  border-radius: 0;
+  color: #000000;
+}
+
+.toggleActive {
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  border-color: var(--primary);
+}
+
+[data-theme='sunlight'] .toggleActive {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.tabsContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.tabsScroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.tabsScroll::-webkit-scrollbar {
+  display: none; /* Safari/Chrome */
+}
+
+.tab {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s;
+}
+
+[data-theme='sunlight'] .tab {
+  border: 2px solid #000000;
+  border-radius: 0;
+  color: #000000;
+  box-shadow: none;
+}
+
+.activeTab {
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  border-color: var(--primary);
+}
+
+[data-theme='sunlight'] .activeTab {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.prayersList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prayerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--card-border);
+}
+
+[data-theme='sunlight'] .prayerCard {
+  border: 2px solid #000000;
+}
+
+.prayerHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.categoryBadge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  background-color: rgba(180, 83, 9, 0.08);
+  color: var(--secondary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+[data-theme='dark'] .categoryBadge {
+  background-color: rgba(251, 191, 3, 0.1);
+  color: var(--secondary);
+}
+
+[data-theme='sunlight'] .categoryBadge {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+.prayerTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+[data-theme='sunlight'] .prayerTitle {
+  color: #000000;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 2px solid var(--secondary-light);
+  padding-left: 10px;
+  margin-top: 4px;
+}
+
+[data-theme='sunlight'] .section {
+  border-left: 3px solid #000000;
+}
+
+.sectionTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--secondary);
+  text-transform: uppercase;
+}
+
+[data-theme='sunlight'] .sectionTitle {
+  color: #000000;
+}
+
+.transliterationText {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.translationText {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.loadingState, .emptyState {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
