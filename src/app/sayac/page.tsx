@@ -195,7 +195,7 @@ export default function CounterPage() {
           {relevantPrayers.map((prayer, index) => (
             <div key={index} className={`${styles.prayerCard} card`}>
               <h5 className={styles.prayerTitle}>{prayer.title}</h5>
-              <div className="arabic-text" style={{ fontSize: '1.8rem', lineHeight: '2.4rem' }}>
+              <div className="arabic-text" style={{ fontSize: '1.8rem', lineHeight: '3.6rem' }}>
                 {prayer.arabic}
               </div>
               <div className={styles.prayerSec}>

@@ -36,7 +36,7 @@ const PrayerSchema = new mongoose.Schema({
   translation: { type: String, required: true },
   category: { 
     type: String, 
-    enum: ['ihram', 'tawaf', 'say', 'general', 'visit'], 
+    enum: ['ihram', 'tawaf', 'say', 'general', 'visit', 'risale'], 
     required: true 
   },
   order: { type: Number, default: 0 },

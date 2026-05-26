@@ -5,7 +5,7 @@ export interface IPrayer extends Document {
   arabic: string;
   transliteration: string;
   translation: string;
-  category: 'ihram' | 'tawaf' | 'say' | 'general' | 'visit';
+  category: 'ihram' | 'tawaf' | 'say' | 'general' | 'visit' | 'risale';
   order: number;
 }
 
@@ -16,7 +16,7 @@ const PrayerSchema = new Schema<IPrayer>({
   translation: { type: String, required: true },
   category: { 
     type: String, 
-    enum: ['ihram', 'tawaf', 'say', 'general', 'visit'], 
+    enum: ['ihram', 'tawaf', 'say', 'general', 'visit', 'risale'], 
     required: true 
   },
   order: { type: Number, default: 0 },

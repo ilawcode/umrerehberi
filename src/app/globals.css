@@ -109,7 +109,7 @@ main {
 .arabic-text {
   font-family: 'Traditional Arabic', 'Scheherazade New', 'Amiri', Georgia, serif;
   font-size: 2.2rem;
-  line-height: 2.8rem;
+  line-height: 2;
   direction: rtl;
   text-align: right;
   color: var(--primary);

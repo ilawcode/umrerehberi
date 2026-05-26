@@ -82,7 +82,8 @@ function PrayersContent() {
     { id: 'tawaf', label: 'Tavaf' },
     { id: 'say', label: 'Sa\'y' },
     { id: 'general', label: 'Genel' },
-    { id: 'visit', label: 'Ziyaret' }
+    { id: 'visit', label: 'Ziyaret' },
+    { id: 'risale', label: 'Risale-i Nur\'daki Dualar' }
   ];
 
   // Filter logic
@@ -176,7 +177,7 @@ function PrayersContent() {
               
               <div 
                 className="arabic-text" 
-                style={{ fontSize: `${arabicFontSize}rem`, lineHeight: `${arabicFontSize * 1.3}rem` }}
+                style={{ fontSize: `${arabicFontSize}rem`, lineHeight: `${arabicFontSize * 2.0}rem` }}
               >
                 {prayer.arabic}
               </div>

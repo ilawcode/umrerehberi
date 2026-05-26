@@ -50,9 +50,7 @@ export default function DashboardPage() {
   const [arabicFontSize, setArabicFontSize] = useState<number>(2.0); // rem
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
-  // Force Light Theme as requested: "light tema olsun"
   useEffect(() => {
-    setTheme('light');
     setMounted(true);
     fetchData();
   }, []);
@@ -122,7 +120,8 @@ export default function DashboardPage() {
     { id: 'tawaf', label: 'Tavaf' },
     { id: 'say', label: 'Sa\'y' },
     { id: 'general', label: 'Genel' },
-    { id: 'visit', label: 'Ziyaret' }
+    { id: 'visit', label: 'Ziyaret' },
+    { id: 'risale', label: 'Risale-i Nur\'daki Dualar' }
   ];
 
   const ruleCategories = [
@@ -288,7 +287,7 @@ export default function DashboardPage() {
                       </svg>
                     </div>
 
-                    <div className="arabic-text" style={{ fontSize: `${arabicFontSize}rem`, lineHeight: `${arabicFontSize * 1.3}rem`, display: isExpanded ? 'block' : 'none' }}>
+                    <div className="arabic-text" style={{ fontSize: `${arabicFontSize}rem`, lineHeight: `${arabicFontSize * 2.0}rem`, display: isExpanded ? 'block' : 'none' }}>
                       {p.arabic}
                     </div>
 

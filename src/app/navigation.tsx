@@ -105,6 +105,16 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
           <span>Yasaklar</span>
         </Link>
 
+        <Link href="/aile" className={`${styles.navItem} ${pathname === '/aile' ? styles.activeNav : ''}`}>
+          <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <span>Ailem</span>
+        </Link>
+
         <Link href="/notlar" className={`${styles.navItem} ${pathname === '/notlar' ? styles.activeNav : ''}`}>
           <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none">
             <path d="M12 20h9" />

@@ -17,7 +17,7 @@ export const defaultPrayers = [
   },
   {
     title: "Mescid-i Haram'a Giriş Duası",
-    arabic: "اللَّهُمَّ افْتَحْ لِي أَبْWOَابَ رَحْمَتِكَ. بِسْمِ اللَّهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ",
+    arabic: "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ. بِسْمِ اللَّهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ اللَّهِ",
     transliteration: "Allahümme'ftah lî ebvâbe rahmetik. Bismillâhi ve's-salâtü ve's-selâmü alâ Rasûlillâh.",
     translation: "Allah'ım! Bana rahmetinin kapılarını aç. Allah'ın adıyla. Salât ve selâm Resûlullah'ın üzerine olsun.",
     category: "general",
@@ -25,7 +25,7 @@ export const defaultPrayers = [
   },
   {
     title: "Kabe'yi İlk Görünce Okunacak Dua",
-    arabic: "اللَّهُمَّ زِدْ هَذَا الْبَيْتَ تَشْرِيفًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً، وَزِدْ mَنْ شَرَّفَهُ وَعَظَّمَهُ مِمَّنْ حَجَّهُ أَوِ اعْتَمَرَهُ تَشْرِيفًا وَتَكْرِيمًا وَتَعْظِيمًا وَبِرًّا. اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، فَحَيِّنَا رَبَّنَا بِالسَّلَامِ",
+    arabic: "اللَّهُمَّ زِدْ هَذَا الْبَيْتَ تَشْرِيفًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً، وَزِدْ مَنْ شَرَّفَهُ وَعَظَّمَهُ مِمَّنْ حَجَّهُ أَوِ اعْتَمَرَهُ تَشْرِيفًا وَتَكْرِيمًا وَتَعْظِيمًا وَبِرًّا. اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، فَحَيِّنَا رَبَّنَا بِالسَّلَامِ",
     transliteration: "Allahümme zid hâze'l-beyte teşrîfen ve ta'zîmen ve tekrîmen ve mehâbeten, ve zid men şerrefehû ve azzamehû mimmen haccehû evi'temerehû teşrîfen ve tekrîmen ve ta'zîmen ve birran. Allahümme ente's-selâmü ve minke's-selâmü fe-hayyinâ rabbenâ bi's-selâm.",
     translation: "Allah'ım! Bu mabedin şerefini, azametini, saygınlığını ve heybetini artır. Ona hac ve umre ile ta'zim edenlerin de şerefini, saygınlığını, azametini ve iyiliğini artır. Allah'ım! Sen esenlik verensin, esenlik sendendir. Rabbimiz, bizi esenlikle yaşat. (Kabe ilk görüldüğünde yapılan duaların kabul olacağı bildirilmiştir.)",
     category: "general",
@@ -49,7 +49,7 @@ export const defaultPrayers = [
   },
   {
     title: "Tavaf Esnasında Okunacak Dua (Rükn-i Yemani ile Hacerü'l-Esved Arası)",
-    arabic: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ Nَّارِ. وَأَدْخِلْنَا الْجَنَّةَ مَعَ الْأَبْرَارِ، يَا عَزِيزُ يَا غَفَّارُ يَا رَبَّ الْعَالَمِينَ",
+    arabic: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ. وَأَدْخِلْنَا الْجَنَّةَ مَعَ الْأَبْرَارِ، يَا عَزِيزُ يَا غَفَّارُ يَا رَبَّ الْعَالَمِينَ",
     transliteration: "Rabbenâ âtinâ fi'd-dünyâ haseneten ve fi'l-âhireti haseneten ve qınâ azâbe'n-nâr. Ve edhilne'l-cennete mea'l-ebrâr, yâ Azîzü yâ Ghaffâru yâ Rabbe'l-âlemîn.",
     translation: "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi cehennem azabından koru. Bizi iyilerle birlikte cennete koy. Ey üstün olan, ey günahları bağışlayan, ey alemlerin Rabbi! (Bu iki rükün arasında bu duayı okumak Peygamberimizden nakledilen masnun bir duadır.)",
     category: "tawaf",
@@ -81,7 +81,7 @@ export const defaultPrayers = [
   },
   {
     title: "Zemzem Suyu İçerken Okunacak Dua",
-    arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِZقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ وَسَقَمٍ",
+    arabic: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا وَاسِعًا وَشِفَاءً مِنْ كُلِّ دَاءٍ وَسَقَمٍ",
     transliteration: "Allahümme innî es'elüke ilmen nâfian ve rızqan vâsian ve şifâen min külli dâin ve seqam.",
     translation: "Allah'ım! Senden faydalı ilim, bol rızık ve her türlü dert ile hastalıktan şifa diliyorum. (Peygamber efendimiz zemzem suyunun ne niyetle içilirse ona şifa olacağını bildirmiştir.)",
     category: "general",
@@ -137,7 +137,7 @@ export const defaultPrayers = [
   },
   {
     title: "Hz. Ebu Bekir (r.a.) ve Hz. Ömer (r.a.) Efendilerimize Selam",
-    arabic: "السَّلَامُ عَلَيْكَ يَا أَبَا بَكْرٍ الصِّدِّيقَ. السَّلَامُ عَلَيْكَ يَا عُمَرَ بْنَ الْخَطَّابِ الْفَارُوقَ، جَZَاكُمَا اللَّهُ عَنْ رَسُولِهِ وَعَنِ الْإِسْلَامِ خَيْرًا",
+    arabic: "السَّلَامُ عَلَيْكَ يَا أَبَا بَكْرٍ الصِّدِّيقَ. السَّلَامُ عَلَيْكَ يَا عُمَرَ بْنَ الْخَطَّابِ الْفَارُوقَ، جَزَاكُمَا اللَّهُ عَنْ رَسُولِهِ وَعَنِ الْإِسْلَامِ خَيْرًا",
     transliteration: "Es-selâmü aleyke yâ Ebâ Bekri's-Sıddîq. Es-selâmü aleyke yâ Ömerabne'l-Hattâbi'l-Fârûq, cezâkümallâhü an Rasûlihî ve ani'l-İslâmi hayran.",
     translation: "Selâm senin üzerine olsun ey Ebâ Bekir es-Sıddîq! Selâm senin üzerine olsun ey Ömer b. Hattâb el-Fârûq! Allah ikinizden de Resûlü adına ve İslam adına en hayırlı mükâfatlarla razı olsun.",
     category: "visit",

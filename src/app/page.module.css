@@ -50,8 +50,8 @@
 }
 
 .statCard {
-  background-color: #ffffff;
-  border: 1px solid rgba(6, 78, 59, 0.08);
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius);
   padding: 12px 6px;
   display: flex;
@@ -61,7 +61,7 @@
   gap: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  box-shadow: var(--shadow);
 }
 
 .statCard:active {
@@ -69,35 +69,68 @@
 }
 
 .activeStatCard {
-  border-color: #b45309;
-  background-color: #fffbeb; /* Gold/Amber highlight */
+  border-color: var(--secondary);
+  background-color: rgba(180, 83, 9, 0.08); /* Gold/Amber highlight */
   box-shadow: 0 4px 8px rgba(180, 83, 9, 0.08);
+}
+
+[data-theme='dark'] .activeStatCard {
+  background-color: rgba(251, 191, 3, 0.15);
+}
+
+[data-theme='sunlight'] .activeStatCard {
+  background-color: #000000;
+  border-color: #000000;
+  box-shadow: none;
 }
 
 .statCount {
   font-size: 1.45rem;
   font-weight: 800;
-  color: #064e3b;
+  color: var(--primary);
 }
 
 .activeStatCard .statCount {
-  color: #b45309;
+  color: var(--secondary);
+}
+
+[data-theme='sunlight'] .activeStatCard .statCount {
+  color: #ffffff;
 }
 
 .statLabel {
   font-size: 0.68rem;
   font-weight: 700;
-  color: #64748b;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.02em;
+}
+
+[data-theme='sunlight'] .statLabel {
+  color: #000000;
+}
+
+[data-theme='sunlight'] .activeStatCard .statLabel {
+  color: #ffffff;
 }
 
 /* Segmented Control */
 .segmentedControl {
   display: flex;
-  background-color: #f1f5f9;
+  background-color: rgba(0, 0, 0, 0.03);
   padding: 4px;
   border-radius: var(--radius);
+}
+
+[data-theme='dark'] .segmentedControl {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='sunlight'] .segmentedControl {
+  background-color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 0;
+  padding: 0;
 }
 
 .segmentBtn {
@@ -107,7 +140,7 @@
   padding: 10px 6px;
   font-size: 0.85rem;
   font-weight: 700;
-  color: #64748b;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,10 +150,21 @@
   transition: all 0.2s ease;
 }
 
+[data-theme='sunlight'] .segmentBtn {
+  border-radius: 0;
+  color: #000000;
+}
+
 .activeSegment {
-  background-color: #ffffff;
-  color: #064e3b;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: var(--card-bg);
+  color: var(--primary);
+  box-shadow: var(--shadow);
+}
+
+[data-theme='sunlight'] .activeSegment {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 0;
 }
 
 /* Search Container */
@@ -133,20 +177,36 @@
 .searchInput {
   flex: 1;
   padding: 12px 44px 12px 14px;
-  border: 1px solid rgba(6, 78, 59, 0.08);
-  background-color: #ffffff;
+  border: 1px solid var(--card-border);
+  background-color: rgba(0, 0, 0, 0.02);
   border-radius: var(--radius-sm);
-  color: #1e293b;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 0.9rem;
   outline: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+  box-shadow: var(--shadow);
   transition: all 0.2s;
 }
 
+[data-theme='dark'] .searchInput {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme='sunlight'] .searchInput {
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  border-radius: 0;
+  color: #000000;
+}
+
 .searchInput:focus {
-  border-color: #064e3b;
+  border-color: var(--primary);
+  background-color: var(--card-bg);
   box-shadow: 0 0 0 2.5px rgba(6, 78, 59, 0.08);
+}
+
+[data-theme='dark'] .searchInput:focus {
+  box-shadow: 0 0 0 2.5px rgba(16, 185, 129, 0.15);
 }
 
 .clearSearchBtn {
@@ -156,10 +216,15 @@
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
+}
+
+[data-theme='sunlight'] .clearSearchBtn {
+  color: #000000;
+  text-decoration: underline;
 }
 
 /* Tab Content */
@@ -191,19 +256,32 @@
   flex-shrink: 0;
   padding: 8px 16px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(6, 78, 59, 0.08);
-  background-color: #ffffff;
-  color: #475569;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-secondary);
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
+[data-theme='sunlight'] .subFilterBtn {
+  border: 2px solid #000000;
+  border-radius: 0;
+  color: #000000;
+  background-color: #ffffff;
+}
+
 .activeSubFilter {
-  background-color: #064e3b;
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  border-color: var(--primary);
+}
+
+[data-theme='sunlight'] .activeSubFilter {
+  background-color: #000000;
   color: #ffffff;
-  border-color: #064e3b;
+  border-color: #000000;
 }
 
 /* Font size panel inside Prayers Tab */
@@ -212,26 +290,40 @@
   align-items: center;
   gap: 8px;
   font-size: 0.8rem;
-  color: #475569;
+  color: var(--text-secondary);
   justify-content: flex-end;
-  background-color: #ffffff;
+  background-color: var(--card-bg);
   padding: 8px 12px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(6, 78, 59, 0.05);
+  border: 1px solid var(--card-border);
+}
+
+[data-theme='sunlight'] .fontControls {
+  border: 2px solid #000000;
+  border-radius: 0;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .fontBtn {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  border: 1px solid rgba(6, 78, 59, 0.1);
-  background-color: #ffffff;
-  color: #1e293b;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
   cursor: pointer;
+}
+
+[data-theme='sunlight'] .fontBtn {
+  border: 2px solid #000000;
+  border-radius: 0;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .fontVal {
@@ -250,14 +342,24 @@
 .itemCard {
   cursor: pointer;
   padding: 14px 16px;
-  border: 1px solid rgba(6, 78, 59, 0.08);
-  background-color: #ffffff;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
   transition: all 0.2s ease;
 }
 
+[data-theme='sunlight'] .itemCard {
+  border: 2px solid #000000;
+  border-radius: 0;
+}
+
 .itemExpanded {
-  border-color: #b45309;
+  border-color: var(--secondary);
   box-shadow: 0 4px 10px rgba(180, 83, 9, 0.05);
+}
+
+[data-theme='sunlight'] .itemExpanded {
+  border-color: #000000;
+  box-shadow: none;
 }
 
 .itemHeader {
@@ -269,27 +371,39 @@
 .itemTitle {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--text-primary);
   flex: 1;
 }
 
+[data-theme='sunlight'] .itemTitle {
+  color: #000000;
+}
+
 .chevron {
-  color: #64748b;
+  color: var(--text-secondary);
   transition: transform 0.2s ease;
 }
 
 .chevronOpen {
   transform: rotate(180deg);
-  color: #064e3b;
+  color: var(--primary);
+}
+
+[data-theme='sunlight'] .chevronOpen {
+  color: #000000;
 }
 
 .itemBody {
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px dashed rgba(6, 78, 59, 0.08);
+  border-top: 1px dashed var(--card-border);
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+[data-theme='sunlight'] .itemBody {
+  border-top: 2px solid #000000;
 }
 
 /* Badges styling */
@@ -301,9 +415,23 @@
   text-transform: uppercase;
 }
 
+[data-theme='sunlight'] .badgeAmber,
+[data-theme='sunlight'] .badgeRed,
+[data-theme='sunlight'] .badgeMakkah,
+[data-theme='sunlight'] .badgeMedina {
+  border-radius: 0;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
 .badgeAmber {
   background-color: rgba(180, 83, 9, 0.06);
-  color: #b45309;
+  color: var(--secondary);
+}
+
+[data-theme='dark'] .badgeAmber {
+  background-color: rgba(251, 191, 3, 0.15);
+  color: var(--secondary);
 }
 
 .badgeRed {
@@ -311,9 +439,19 @@
   color: #ef4444;
 }
 
+[data-theme='dark'] .badgeRed {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
 .badgeMakkah {
   background-color: rgba(6, 78, 59, 0.06);
-  color: #064e3b;
+  color: var(--primary);
+}
+
+[data-theme='dark'] .badgeMakkah {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--primary);
 }
 
 .badgeMedina {
@@ -321,40 +459,65 @@
   color: #2563eb;
 }
 
+[data-theme='dark'] .badgeMedina {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
 /* Text Sections */
 .textSection {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  border-left: 2px solid #b45309;
+  border-left: 2px solid var(--secondary-light);
   padding-left: 10px;
+}
+
+[data-theme='sunlight'] .textSection {
+  border-left: 3px solid #000000;
 }
 
 .textSection h5 {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #b45309;
+  color: var(--secondary);
   text-transform: uppercase;
+}
+
+[data-theme='sunlight'] .textSection h5 {
+  color: #000000;
 }
 
 .transliteration {
   font-size: 0.88rem;
   line-height: 1.45;
-  color: #1e293b;
+  color: var(--text-primary);
   font-style: italic;
+}
+
+[data-theme='sunlight'] .transliteration {
+  color: #000000;
 }
 
 .translation {
   font-size: 0.88rem;
   line-height: 1.45;
-  color: #475569;
+  color: var(--text-secondary);
+}
+
+[data-theme='sunlight'] .translation {
+  color: #000000;
 }
 
 /* Yasaklar Specifics */
 .description {
   font-size: 0.88rem;
   line-height: 1.45;
-  color: #475569;
+  color: var(--text-secondary);
+}
+
+[data-theme='sunlight'] .description {
+  color: #000000;
 }
 
 .penaltyBox, .importanceBox {
@@ -370,6 +533,18 @@
   border-left: 3px solid #ef4444;
 }
 
+[data-theme='dark'] .penaltyBox {
+  background-color: rgba(239, 68, 68, 0.08);
+  border-left-color: #f87171;
+}
+
+[data-theme='sunlight'] .penaltyBox {
+  background-color: #ffffff;
+  border: 1.5px solid #000000;
+  border-left: 5px solid #000000;
+  border-radius: 0;
+}
+
 .penaltyHeader {
   display: flex;
   align-items: center;
@@ -380,16 +555,39 @@
   text-transform: uppercase;
 }
 
+[data-theme='dark'] .penaltyHeader {
+  color: #f87171;
+}
+
+[data-theme='sunlight'] .penaltyHeader {
+  color: #000000;
+}
+
 .penaltyText {
   font-size: 0.84rem;
   line-height: 1.4;
-  color: #1e293b;
+  color: var(--text-primary);
+}
+
+[data-theme='sunlight'] .penaltyText {
+  color: #000000;
 }
 
 /* Ziyaretler Specifics */
 .importanceBox {
   background-color: rgba(6, 78, 59, 0.03);
-  border-left: 3px solid #064e3b;
+  border-left: 3px solid var(--primary);
+}
+
+[data-theme='dark'] .importanceBox {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+[data-theme='sunlight'] .importanceBox {
+  background-color: #ffffff;
+  border: 1.5px solid #000000;
+  border-left: 5px solid #000000;
+  border-radius: 0;
 }
 
 .importanceHeader {
@@ -398,19 +596,27 @@
   gap: 6px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #064e3b;
+  color: var(--primary);
   text-transform: uppercase;
+}
+
+[data-theme='sunlight'] .importanceHeader {
+  color: #000000;
 }
 
 .importanceText {
   font-size: 0.84rem;
   line-height: 1.4;
-  color: #1e293b;
+  color: var(--text-primary);
+}
+
+[data-theme='sunlight'] .importanceText {
+  color: #000000;
 }
 
 .empty {
   text-align: center;
   padding: 30px;
-  color: #64748b;
+  color: var(--text-secondary);
   font-size: 0.85rem;
 }
