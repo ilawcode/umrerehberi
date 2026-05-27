@@ -168,11 +168,10 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
       <nav className={`${styles.bottomNav} glass`}>
         <Link href="/" className={`${styles.navItem} ${pathname === '/' ? styles.activeNav : ''}`}>
           <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none">
-            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
-            <line x1="9" y1="3" x2="9" y2="18" />
-            <line x1="15" y1="6" x2="15" y2="21" />
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
-          <span>Rehber</span>
+          <span>Ana Sayfa</span>
         </Link>
 
         <Link href="/dualar" className={`${styles.navItem} ${pathname === '/dualar' ? styles.activeNav : ''}`}>
@@ -191,14 +190,12 @@ export default function Navigation({ children }: { children: React.ReactNode }) 
           <span>Sayaç</span>
         </Link>
 
-        <Link href="/sohbet" className={`${styles.navItem} ${pathname === '/sohbet' ? styles.activeNav : ''}`}>
+        <Link href="/rehber" className={`${styles.navItem} ${pathname === '/rehber' ? styles.activeNav : ''}`}>
           <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2" fill="none">
-            <path d="M21 11.5a8.38 8.38 0 0 0-1.71-5.09L12 2 4.71 6.41a8.38 8.38 0 0 0-1.71 5.09v5.5c0 .79.32 1.54.88 2.08L6 21l5-3h5c.79 0 1.54-.32 2.08-.88L21 12.5z" />
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
           </svg>
-          <span>Grup Sohbet</span>
-          {unreadCount > 0 && (
-            <span className={styles.unreadBadge}>{unreadCount}</span>
-          )}
+          <span>Rehber</span>
         </Link>
 
         <Link href="/aile" className={`${styles.navItem} ${pathname === '/aile' ? styles.activeNav : ''}`}>

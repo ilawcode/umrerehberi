@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useTheme } from '../theme-provider';
 import { defaultPrayers, defaultRules, defaultPlaces } from '@/lib/seedData';
 import styles from './rehber.module.css';
@@ -32,7 +33,9 @@ interface Place {
 
 export default function GuidePage() {
   const { setTheme } = useTheme();
-  const [activeTab, setActiveTab] = useState<ActiveTab>('prayers');
+  const searchParams = useSearchParams();
+  const tabParam = searchParams?.get('tab') as ActiveTab | null;
+  const [activeTab, setActiveTab] = useState<ActiveTab>(tabParam ?? 'prayers');
   const [mounted, setMounted] = useState(false);
 
   // Data states with fallbacks
@@ -54,6 +57,14 @@ export default function GuidePage() {
     setMounted(true);
     fetchData();
   }, []);
+
+  // Sync tab when navigating from the landing page with ?tab=
+  useEffect(() => {
+    if (tabParam && tabParam !== activeTab) {
+      setActiveTab(tabParam);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tabParam]);
 
   const fetchData = async () => {
     try {
