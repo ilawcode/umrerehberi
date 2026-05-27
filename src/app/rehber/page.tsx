@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTheme } from '../theme-provider';
 import { defaultPrayers, defaultRules, defaultPlaces } from '@/lib/seedData';
@@ -31,7 +31,7 @@ interface Place {
   order: number;
 }
 
-export default function GuidePage() {
+function GuidePageInner() {
   const { setTheme } = useTheme();
   const searchParams = useSearchParams();
   const tabParam = searchParams?.get('tab') as ActiveTab | null;
@@ -461,5 +461,13 @@ export default function GuidePage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function GuidePage() {
+  return (
+    <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center', opacity: 0.6 }}>Yükleniyor...</div>}>
+      <GuidePageInner />
+    </Suspense>
   );
 }
