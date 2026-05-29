@@ -25,7 +25,7 @@ function PrayersContent() {
   const [arabicFontSize, setArabicFontSize] = useState<number>(2.2); // rem
   const [showTransliteration, setShowTransliteration] = useState(true);
   const [showTranslation, setShowTranslation] = useState(true);
-  const [collapsedPrayers, setCollapsedPrayers] = useState<Record<string, boolean>>({});
+  const [expandedPrayers, setExpandedPrayers] = useState<Record<string, boolean>>({});
 
   // Read URL search params (e.g. from the guide page redirection)
   useEffect(() => {
@@ -103,12 +103,12 @@ function PrayersContent() {
   });
 
   const toggleExpand = (title: string, id: string) => {
-    const isCurrentlyCollapsed = !!collapsedPrayers[title];
-    const isExpanding = isCurrentlyCollapsed; // If it was collapsed, we are expanding it.
+    const isCurrentlyExpanded = !!expandedPrayers[title];
+    const isExpanding = !isCurrentlyExpanded; // If it wasn't expanded, we are expanding it.
     
-    setCollapsedPrayers(prev => ({
+    setExpandedPrayers(prev => ({
       ...prev,
-      [title]: !isCurrentlyCollapsed
+      [title]: !isCurrentlyExpanded
     }));
 
     if (isExpanding) {
@@ -128,23 +128,23 @@ function PrayersContent() {
     }
   };
 
-  const isAllExpanded = filteredPrayers.length > 0 && filteredPrayers.every(prayer => !collapsedPrayers[prayer.title]);
+  const isAllExpanded = filteredPrayers.length > 0 && filteredPrayers.every(prayer => expandedPrayers[prayer.title]);
 
   const toggleAllPrayers = () => {
     if (isAllExpanded) {
       // Collapse all filtered prayers
-      const newCollapsed = { ...collapsedPrayers };
+      const newExpanded = { ...expandedPrayers };
       filteredPrayers.forEach(p => {
-        newCollapsed[p.title] = true;
+        delete newExpanded[p.title];
       });
-      setCollapsedPrayers(newCollapsed);
+      setExpandedPrayers(newExpanded);
     } else {
       // Expand all filtered prayers
-      const newCollapsed = { ...collapsedPrayers };
+      const newExpanded = { ...expandedPrayers };
       filteredPrayers.forEach(p => {
-        delete newCollapsed[p.title];
+        newExpanded[p.title] = true;
       });
-      setCollapsedPrayers(newCollapsed);
+      setExpandedPrayers(newExpanded);
     }
   };
 
@@ -228,7 +228,7 @@ function PrayersContent() {
           <div className={styles.loadingState}>Dualar yükleniyor...</div>
         ) : filteredPrayers.length > 0 ? (
           filteredPrayers.map((prayer, index) => {
-            const isExpanded = !collapsedPrayers[prayer.title];
+            const isExpanded = !!expandedPrayers[prayer.title];
             const cardId = `prayer-card-${index}`;
             return (
               <div 
