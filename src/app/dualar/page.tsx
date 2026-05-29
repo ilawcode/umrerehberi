@@ -115,16 +115,17 @@ function PrayersContent() {
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
-          const headerHeight = 80; // 64px header + padding offset
+          const headerHeight = 72; // height of sticky header + small padding offset
           const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+          const currentScroll = window.scrollY || window.pageYOffset || 0;
+          const offsetPosition = elementPosition + currentScroll - headerHeight;
           
           window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
           });
         }
-      }, 100);
+      }, 150); // Timeout increased to 150ms to ensure the React DOM has finished rendering and layout updates
     }
   };
 
