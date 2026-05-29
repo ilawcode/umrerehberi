@@ -25,7 +25,7 @@ function PrayersContent() {
   const [arabicFontSize, setArabicFontSize] = useState<number>(2.2); // rem
   const [showTransliteration, setShowTransliteration] = useState(true);
   const [showTranslation, setShowTranslation] = useState(true);
-  const [expandedPrayers, setExpandedPrayers] = useState<Record<string, boolean>>({});
+  const [expandedPrayer, setExpandedPrayer] = useState<string | null>(null);
 
   // Read URL search params (e.g. from the guide page redirection)
   useEffect(() => {
@@ -103,13 +103,8 @@ function PrayersContent() {
   });
 
   const toggleExpand = (title: string, id: string) => {
-    const isCurrentlyExpanded = !!expandedPrayers[title];
-    const isExpanding = !isCurrentlyExpanded; // If it wasn't expanded, we are expanding it.
-    
-    setExpandedPrayers(prev => ({
-      ...prev,
-      [title]: !isCurrentlyExpanded
-    }));
+    const isExpanding = expandedPrayer !== title;
+    setExpandedPrayer(isExpanding ? title : null);
 
     if (isExpanding) {
       setTimeout(() => {
@@ -126,26 +121,6 @@ function PrayersContent() {
           });
         }
       }, 150); // Timeout increased to 150ms to ensure the React DOM has finished rendering and layout updates
-    }
-  };
-
-  const isAllExpanded = filteredPrayers.length > 0 && filteredPrayers.every(prayer => expandedPrayers[prayer.title]);
-
-  const toggleAllPrayers = () => {
-    if (isAllExpanded) {
-      // Collapse all filtered prayers
-      const newExpanded = { ...expandedPrayers };
-      filteredPrayers.forEach(p => {
-        delete newExpanded[p.title];
-      });
-      setExpandedPrayers(newExpanded);
-    } else {
-      // Expand all filtered prayers
-      const newExpanded = { ...expandedPrayers };
-      filteredPrayers.forEach(p => {
-        newExpanded[p.title] = true;
-      });
-      setExpandedPrayers(newExpanded);
     }
   };
 
@@ -182,13 +157,6 @@ function PrayersContent() {
             <button id="font-inc-btn" onClick={increaseFontSize} className={styles.circleBtn}>A+</button>
           </div>
           <div className={styles.toggles}>
-            <button 
-              id="toggle-all-btn"
-              onClick={toggleAllPrayers} 
-              className={`${styles.toggleBtn} ${isAllExpanded ? styles.toggleActive : ''}`}
-            >
-              Hepsi Açık
-            </button>
             <button 
               id="toggle-trans-btn"
               onClick={() => setShowTransliteration(!showTransliteration)} 
@@ -229,7 +197,7 @@ function PrayersContent() {
           <div className={styles.loadingState}>Dualar yükleniyor...</div>
         ) : filteredPrayers.length > 0 ? (
           filteredPrayers.map((prayer, index) => {
-            const isExpanded = !!expandedPrayers[prayer.title];
+            const isExpanded = expandedPrayer === prayer.title;
             const cardId = `prayer-card-${index}`;
             return (
               <div 
