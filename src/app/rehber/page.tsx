@@ -66,6 +66,11 @@ function GuidePageInner() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabParam]);
 
+  // Scroll to top when active tab or subcategory filters change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab, activePrayerCategory, activeRuleCategory, activePlaceCity]);
+
   const fetchData = async () => {
     try {
       // Fetch prayers
@@ -93,8 +98,25 @@ function GuidePageInner() {
     }
   };
 
-  const toggleExpand = (title: string) => {
-    setExpandedItem(expandedItem === title ? null : title);
+  const toggleExpand = (title: string, id: string) => {
+    const isExpanding = expandedItem !== title;
+    setExpandedItem(isExpanding ? title : null);
+    
+    if (isExpanding) {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const headerHeight = 80; // 64px header + padding offset
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
   };
 
   if (!mounted) return null;
@@ -282,11 +304,13 @@ function GuidePageInner() {
             {filteredPrayers.length > 0 ? (
               filteredPrayers.map((p, idx) => {
                 const isExpanded = expandedItem === p.title;
+                const cardId = `prayer-card-${idx}`;
                 return (
                   <div 
                     key={idx} 
+                    id={cardId}
                     className={`${styles.itemCard} ${isExpanded ? styles.itemExpanded : ''} card`}
-                    onClick={() => toggleExpand(p.title)}
+                    onClick={() => toggleExpand(p.title, cardId)}
                   >
                     <div className={styles.itemHeader}>
                       <span className={styles.badgeAmber}>
@@ -345,11 +369,13 @@ function GuidePageInner() {
             {filteredRules.length > 0 ? (
               filteredRules.map((r, idx) => {
                 const isExpanded = expandedItem === r.title;
+                const cardId = `rule-card-${idx}`;
                 return (
                   <div 
                     key={idx} 
+                    id={cardId}
                     className={`${styles.itemCard} ${isExpanded ? styles.itemExpanded : ''} card`}
-                    onClick={() => toggleExpand(r.title)}
+                    onClick={() => toggleExpand(r.title, cardId)}
                   >
                     <div className={styles.itemHeader}>
                       <span className={styles.badgeRed}>
@@ -420,11 +446,13 @@ function GuidePageInner() {
             {filteredPlaces.length > 0 ? (
               filteredPlaces.map((pl, idx) => {
                 const isExpanded = expandedItem === pl.title;
+                const cardId = `place-card-${idx}`;
                 return (
                   <div 
                     key={idx} 
+                    id={cardId}
                     className={`${styles.itemCard} ${isExpanded ? styles.itemExpanded : ''} card`}
-                    onClick={() => toggleExpand(pl.title)}
+                    onClick={() => toggleExpand(pl.title, cardId)}
                   >
                     <div className={styles.itemHeader}>
                       <span className={pl.city === 'Mekke' ? styles.badgeMakkah : styles.badgeMedina}>

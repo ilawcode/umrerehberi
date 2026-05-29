@@ -38,6 +38,11 @@ export default function RulesPage() {
     loadRules();
   }, []);
 
+  // Scroll to top when active category changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeCategory]);
+
   const categories = [
     { id: 'all', label: 'Tümü' },
     { id: 'body', label: 'Beden & Bakım' },

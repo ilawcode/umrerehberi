@@ -34,6 +34,11 @@ function PrayersContent() {
     }
   }, [searchParams]);
 
+  // Scroll to top when active category changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeCategory]);
+
   // Fetch prayers from database, fallback to seed data on error/offline
   useEffect(() => {
     async function loadPrayers() {

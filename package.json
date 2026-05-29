@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:seed": "node scripts/importPrayers.js"
+    "db:seed": "node scripts/importAll.js"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",
