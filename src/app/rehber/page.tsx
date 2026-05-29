@@ -4,6 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTheme } from '../theme-provider';
 import { defaultPrayers, defaultRules, defaultPlaces } from '@/lib/seedData';
+import { useCachedFetch } from '@/lib/offlineCache';
 import styles from './rehber.module.css';
 
 type ActiveTab = 'prayers' | 'rules' | 'places';
@@ -38,10 +39,22 @@ function GuidePageInner() {
   const [activeTab, setActiveTab] = useState<ActiveTab>(tabParam ?? 'prayers');
   const [mounted, setMounted] = useState(false);
 
-  // Data states with fallbacks
-  const [prayers, setPrayers] = useState<Prayer[]>(defaultPrayers);
-  const [rules, setRules] = useState<Rule[]>(defaultRules);
-  const [places, setPlaces] = useState<Place[]>(defaultPlaces);
+  // Cached data states
+  const { data: prayers } = useCachedFetch<Prayer[]>(
+    'umre_cache_prayers',
+    '/api/prayers',
+    defaultPrayers
+  );
+  const { data: rules } = useCachedFetch<Rule[]>(
+    'umre_cache_rules',
+    '/api/rules',
+    defaultRules
+  );
+  const { data: places } = useCachedFetch<Place[]>(
+    'umre_cache_places',
+    '/api/places',
+    defaultPlaces
+  );
 
   // Filtering & search states
   const [searchQuery, setSearchQuery] = useState('');
@@ -55,7 +68,6 @@ function GuidePageInner() {
 
   useEffect(() => {
     setMounted(true);
-    fetchData();
   }, []);
 
   // Sync tab when navigating from the landing page with ?tab=
@@ -71,32 +83,6 @@ function GuidePageInner() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab, activePrayerCategory, activeRuleCategory, activePlaceCity]);
 
-  const fetchData = async () => {
-    try {
-      // Fetch prayers
-      const pRes = await fetch('/api/prayers');
-      if (pRes.ok) {
-        const pData = await pRes.json();
-        if (pData.success && pData.data?.length > 0) setPrayers(pData.data);
-      }
-      
-      // Fetch rules
-      const rRes = await fetch('/api/rules');
-      if (rRes.ok) {
-        const rData = await rRes.json();
-        if (rData.success && rData.data?.length > 0) setRules(rData.data);
-      }
-
-      // Fetch places
-      const plRes = await fetch('/api/places');
-      if (plRes.ok) {
-        const plData = await plRes.json();
-        if (plData.success && plData.data?.length > 0) setPlaces(plData.data);
-      }
-    } catch (e) {
-      console.warn('API error, using offline seed data:', e);
-    }
-  };
 
   const toggleExpand = (title: string, id: string) => {
     const isExpanding = expandedItem !== title;

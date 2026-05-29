@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { defaultRules } from '@/lib/seedData';
+import { useCachedFetch } from '@/lib/offlineCache';
 import styles from './yasaklar.module.css';
 
 interface RuleData {
@@ -13,30 +14,13 @@ interface RuleData {
 }
 
 export default function RulesPage() {
-  const [rules, setRules] = useState<RuleData[]>(defaultRules);
-  const [loading, setLoading] = useState(true);
+  const { data: rules, loading } = useCachedFetch<RuleData[]>(
+    'umre_cache_rules',
+    '/api/rules',
+    defaultRules
+  );
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
-  useEffect(() => {
-    async function loadRules() {
-      try {
-        setLoading(true);
-        const res = await fetch('/api/rules');
-        if (res.ok) {
-          const json = await res.json();
-          if (json.success && json.data && json.data.length > 0) {
-            setRules(json.data);
-          }
-        }
-      } catch (e) {
-        console.warn('API connection failed, using offline rules data:', e);
-        // Fallback to defaultRules (initial state)
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadRules();
-  }, []);
 
   // Scroll to top when active category changes
   useEffect(() => {

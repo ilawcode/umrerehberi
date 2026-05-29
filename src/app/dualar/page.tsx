@@ -3,6 +3,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { defaultPrayers } from '@/lib/seedData';
+import { useCachedFetch } from '@/lib/offlineCache';
 import styles from './dualar.module.css';
 
 interface PrayerData {
@@ -18,8 +19,11 @@ function PrayersContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   
-  const [prayers, setPrayers] = useState<PrayerData[]>(defaultPrayers);
-  const [loading, setLoading] = useState(true);
+  const { data: prayers, loading } = useCachedFetch<PrayerData[]>(
+    'umre_cache_prayers',
+    '/api/prayers',
+    defaultPrayers
+  );
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [arabicFontSize, setArabicFontSize] = useState<number>(2.2); // rem
@@ -40,27 +44,6 @@ function PrayersContent() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeCategory]);
 
-  // Fetch prayers from database, fallback to seed data on error/offline
-  useEffect(() => {
-    async function loadPrayers() {
-      try {
-        setLoading(true);
-        const res = await fetch('/api/prayers');
-        if (res.ok) {
-          const json = await res.json();
-          if (json.success && json.data && json.data.length > 0) {
-            setPrayers(json.data);
-          }
-        }
-      } catch (e) {
-        console.warn('API connection failed, using offline seed data:', e);
-        // Fallback to defaultPrayers (already set as initial state)
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadPrayers();
-  }, []);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
