@@ -223,16 +223,29 @@
   flex-direction: column;
   gap: 12px;
   border: 1px solid var(--card-border);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 [data-theme='sunlight'] .prayerCard {
   border: 2px solid #000000;
 }
 
+.prayerCardExpanded {
+  border-color: var(--secondary);
+  box-shadow: 0 4px 10px rgba(180, 83, 9, 0.05);
+}
+
+[data-theme='sunlight'] .prayerCardExpanded {
+  border-color: #000000;
+  box-shadow: none;
+}
+
 .prayerHeader {
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
 }
 
 .categoryBadge {
@@ -260,10 +273,40 @@
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--primary);
+  flex: 1;
 }
 
 [data-theme='sunlight'] .prayerTitle {
   color: #000000;
+}
+
+.chevron {
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+
+[data-theme='sunlight'] .chevronOpen {
+  color: #000000;
+}
+
+.prayerBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px dashed var(--card-border);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+[data-theme='sunlight'] .prayerBody {
+  border-top: 2px solid #000000;
 }
 
 .section {

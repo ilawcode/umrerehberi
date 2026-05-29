@@ -25,6 +25,7 @@ function PrayersContent() {
   const [arabicFontSize, setArabicFontSize] = useState<number>(2.2); // rem
   const [showTransliteration, setShowTransliteration] = useState(true);
   const [showTranslation, setShowTranslation] = useState(true);
+  const [collapsedPrayers, setCollapsedPrayers] = useState<Record<string, boolean>>({});
 
   // Read URL search params (e.g. from the guide page redirection)
   useEffect(() => {
@@ -101,6 +102,52 @@ function PrayersContent() {
     return matchesCategory && matchesSearch;
   });
 
+  const toggleExpand = (title: string, id: string) => {
+    const isCurrentlyCollapsed = !!collapsedPrayers[title];
+    const isExpanding = isCurrentlyCollapsed; // If it was collapsed, we are expanding it.
+    
+    setCollapsedPrayers(prev => ({
+      ...prev,
+      [title]: !isCurrentlyCollapsed
+    }));
+
+    if (isExpanding) {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const headerHeight = 80; // 64px header + padding offset
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    }
+  };
+
+  const isAllExpanded = filteredPrayers.length > 0 && filteredPrayers.every(prayer => !collapsedPrayers[prayer.title]);
+
+  const toggleAllPrayers = () => {
+    if (isAllExpanded) {
+      // Collapse all filtered prayers
+      const newCollapsed = { ...collapsedPrayers };
+      filteredPrayers.forEach(p => {
+        newCollapsed[p.title] = true;
+      });
+      setCollapsedPrayers(newCollapsed);
+    } else {
+      // Expand all filtered prayers
+      const newCollapsed = { ...collapsedPrayers };
+      filteredPrayers.forEach(p => {
+        delete newCollapsed[p.title];
+      });
+      setCollapsedPrayers(newCollapsed);
+    }
+  };
+
   return (
     <div className={styles.container}>
       {/* Search and Controls */}
@@ -134,6 +181,13 @@ function PrayersContent() {
             <button id="font-inc-btn" onClick={increaseFontSize} className={styles.circleBtn}>A+</button>
           </div>
           <div className={styles.toggles}>
+            <button 
+              id="toggle-all-btn"
+              onClick={toggleAllPrayers} 
+              className={`${styles.toggleBtn} ${isAllExpanded ? styles.toggleActive : ''}`}
+            >
+              Hepsi Açık
+            </button>
             <button 
               id="toggle-trans-btn"
               onClick={() => setShowTransliteration(!showTransliteration)} 
@@ -173,35 +227,51 @@ function PrayersContent() {
         {loading ? (
           <div className={styles.loadingState}>Dualar yükleniyor...</div>
         ) : filteredPrayers.length > 0 ? (
-          filteredPrayers.map((prayer, index) => (
-            <div key={prayer._id || index} className={`${styles.prayerCard} card`}>
-              <div className={styles.prayerHeader}>
-                <span className={styles.categoryBadge}>{categories.find(c => c.id === prayer.category)?.label}</span>
-                <h3 className={styles.prayerTitle}>{prayer.title}</h3>
-              </div>
-              
+          filteredPrayers.map((prayer, index) => {
+            const isExpanded = !collapsedPrayers[prayer.title];
+            const cardId = `prayer-card-${index}`;
+            return (
               <div 
-                className="arabic-text" 
-                style={{ fontSize: `${arabicFontSize}rem`, lineHeight: `${arabicFontSize * 2.0}rem` }}
+                key={prayer._id || index} 
+                id={cardId}
+                className={`${styles.prayerCard} ${isExpanded ? styles.prayerCardExpanded : ''} card`}
+                onClick={() => toggleExpand(prayer.title, cardId)}
               >
-                {prayer.arabic}
+                <div className={styles.prayerHeader}>
+                  <span className={styles.categoryBadge}>{categories.find(c => c.id === prayer.category)?.label}</span>
+                  <h3 className={styles.prayerTitle}>{prayer.title}</h3>
+                  <svg className={`${styles.chevron} ${isExpanded ? styles.chevronOpen : ''}`} viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </div>
+                
+                {isExpanded && (
+                  <div className={styles.prayerBody} onClick={(e) => e.stopPropagation()}>
+                    <div 
+                      className="arabic-text" 
+                      style={{ fontSize: `${arabicFontSize}rem`, lineHeight: `${arabicFontSize * 2.0}rem` }}
+                    >
+                      {prayer.arabic}
+                    </div>
+
+                    {showTransliteration && (
+                      <div className={styles.section}>
+                        <h4 className={styles.sectionTitle}>Türkçe Okunuşu:</h4>
+                        <p className={styles.transliterationText}>{prayer.transliteration}</p>
+                      </div>
+                    )}
+
+                    {showTranslation && (
+                      <div className={styles.section}>
+                        <h4 className={styles.sectionTitle}>Meali:</h4>
+                        <p className={styles.translationText}>{prayer.translation}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
-
-              {showTransliteration && (
-                <div className={styles.section}>
-                  <h4 className={styles.sectionTitle}>Türkçe Okunuşu:</h4>
-                  <p className={styles.transliterationText}>{prayer.transliteration}</p>
-                </div>
-              )}
-
-              {showTranslation && (
-                <div className={styles.section}>
-                  <h4 className={styles.sectionTitle}>Meali:</h4>
-                  <p className={styles.translationText}>{prayer.translation}</p>
-                </div>
-              )}
-            </div>
-          ))
+            );
+          })
         ) : (
           <div className={styles.emptyState}>Aradığınız kriterlere uygun dua bulunamadı.</div>
         )}
